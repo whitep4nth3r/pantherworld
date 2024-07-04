@@ -3,11 +3,6 @@ export default oauth.twitchEventHandler({
     scope: ["user:read:email"],
   },
   async onSuccess(event, { user, tokens }) {
-    console.log("callback");
-
-    console.log(user);
-    console.log(tokens);
-
     await setUserSession(event, {
       user: {
         accessToken: tokens.access_token,

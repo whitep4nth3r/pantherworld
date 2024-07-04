@@ -2,6 +2,11 @@
 import { getQuery } from "ufo";
 const config = useRuntimeConfig();
 const { loggedIn, user, session, clear } = useUserSession();
+
+function logout() {
+  clear();
+  return navigateTo("/");
+}
 </script>
 
 <template>
@@ -16,7 +21,7 @@ const { loggedIn, user, session, clear } = useUserSession();
       <button
         type="button"
         v-if="loggedIn"
-        @click="clear"
+        @click="logout"
         class="text-white bg-violet-600 text-xl py-2 px-4 rounded-lg">
         Log out
       </button>

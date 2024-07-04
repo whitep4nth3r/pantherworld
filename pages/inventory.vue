@@ -1,17 +1,22 @@
 <script setup lang="ts">
 const config = useRuntimeConfig();
 
-definePageMeta({ favicon: "🎒" });
+definePageMeta({
+  favicon: "🎒",
+  middleware: () => {
+    const { loggedIn, user, session, clear } = useUserSession();
+    if (!loggedIn.value) {
+      return navigateTo("/");
+    }
+  },
+});
+
 useSeoMeta({
   title: "Inventory",
   description: "View your items",
 });
 
 const { loggedIn, user, session, clear } = useUserSession();
-
-if (!loggedIn.value) {
-  await navigateTo("/");
-}
 
 const nuxtApp = useNuxtApp();
 
