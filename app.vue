@@ -18,6 +18,7 @@ useHead({
 </script>
 
 <template>
+  <HeaderNav />
   <main>
     <NuxtRouteAnnouncer />
     <NuxtPage />
