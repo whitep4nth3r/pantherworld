@@ -142,7 +142,7 @@ onMounted(() => {
         icon="/icons/utils/trophy.svg"
         iconAlt="Trophy"
         :topText="data.inventory.items[0].name"
-        :bottomText="`Rarest item (${data.inventory.items[0].rarity})`" />
+        :bottomText="`Rarity ${data.inventory.items[0].rarity}`" />
     </section>
 
     <section class="my-4" v-if="data">
