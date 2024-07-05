@@ -54,7 +54,7 @@ const locationBg = computed(() => {
 
 const population = computed(() => {
   if (data.value?.inventory.players_in_zone > 0) {
-    return `(pop. ${data.value?.inventory.players_in_zone})`;
+    return `(${data.value?.inventory.players_in_zone})`;
   }
 
   return "";
@@ -117,6 +117,8 @@ const spawnDaysAgo = computed(() => {
     <section class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4" v-auto-animate>
       <InventoryInfoItem
         :icon="`/icons/zones/${data.inventory.location.replace(' ', '-').toLowerCase()}.svg`"
+        iconSecondary="/icons/utils/population.svg"
+        iconSecondaryAlt="people representing population"
         :iconAlt="data.inventory.location"
         :topText="data.inventory.location"
         :bottomText="`Zone ${population}`" />

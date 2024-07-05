@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const props = defineProps<{
   icon: string;
+  iconSecondary?: string;
+  iconSecondaryAlt?: string;
   iconAlt: string;
   topText: string | number;
   bottomText: string;
@@ -14,7 +16,10 @@ const props = defineProps<{
     </div>
     <div class="flex flex-col gap-1">
       <p class="text-white capitalize font-bold">{{ topText }}</p>
-      <p class="text-white">{{ bottomText }}</p>
+      <div class="flex flex-row gap-1">
+        <img :src="iconSecondary" v-if="iconSecondary" height="24" width="24" :alt="iconSecondaryAlt" />
+        <p class="text-white">{{ bottomText }}</p>
+      </div>
     </div>
   </div>
 </template>
