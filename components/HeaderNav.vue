@@ -15,6 +15,7 @@ function logout() {
       <NuxtLink href="/" class="py-2">Home</NuxtLink>
       <NuxtLink href="/manual" class="py-2">How to play</NuxtLink>
       <NuxtLink href="/inventory" class="py-2" v-if="loggedIn">Inventory</NuxtLink>
+      <a href="https://github.com/whitep4nth3r/pantherworld/issues" class="py-2" target="_blank">GitHub</a>
     </nav>
 
     <div>
