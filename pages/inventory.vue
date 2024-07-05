@@ -20,7 +20,6 @@ const { loggedIn, user, session, clear } = useUserSession();
 
 const nuxtApp = useNuxtApp();
 
-// TODO — call refresh on setInterval on e.g. home page for 'latest data'
 const { status, data, error, refresh } = await useFetch(`inventory/`, {
   baseURL: config.public.world_api_url,
   headers: {
@@ -84,6 +83,14 @@ const spawnDaysAgo = computed(() => {
 
   return "Unavailable";
 });
+
+onMounted(() => {
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) {
+      refresh();
+    }
+  });
+});
 </script>
 
 <template>
@@ -103,7 +110,7 @@ const spawnDaysAgo = computed(() => {
       Refresh
     </button>
     <section
-      class="flex flex-col rounded-t-lg p-6 rounded-r-lg justify-center items-center align gap-2 bg-gradient-to-b to-zinc-950"
+      class="flex flex-col rounded-lg p-6 justify-center items-center align gap-2 bg-gradient-to-b to-zinc-950"
       :class="locationBg">
       <img
         :src="user?.image"
