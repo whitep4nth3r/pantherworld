@@ -95,23 +95,21 @@ onMounted(() => {
 
 <template>
   <div>
-    <button
-      type="button"
-      @click="refresh"
-      class="refresh-button text-white bg-green-800 text-xl py-2 px-4 rounded-lg m-auto mb-4 flex gap-2 items-center">
-      <img
-        src="/icons/utils/loading.svg"
-        alt="loading"
-        height="24"
-        width="24"
-        class="text-white"
-        v-if="status === `pending`" />
-      <img src="/icons/utils/refresh.svg" alt="refresh" height="24" width="24" class="text-white" v-else />
-      Refresh
-    </button>
     <section
-      class="flex flex-col rounded-lg p-6 justify-center items-center align gap-2 bg-gradient-to-b to-zinc-950"
+      class="flex flex-col rounded-lg p-6 justify-center items-center align gap-2 bg-gradient-to-b to-zinc-950 relative"
       :class="locationBg">
+      <button
+        type="button"
+        @click="refresh"
+        aria-label="Refresh inventory"
+        class="m-auto p-2 rounded-full bg-zinc-600 s-14 text-2xl leading-none absolute top-2 right-2">
+        <img
+          src="/icons/utils/refresh.svg"
+          alt="loading"
+          height="24"
+          width="24"
+          :class="{ 'animate-spin': status === `pending` }" />
+      </button>
       <img
         :src="user?.image"
         height="124"

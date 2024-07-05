@@ -57,8 +57,8 @@ useSeoMeta({
           </tr>
           <tr>
             <td class="border border-zinc-500 p-2">🫳</td>
-            <td class="border border-zinc-500 p-2">!drop [item]</td>
-            <td class="border border-zinc-500 p-2">Drop an item in your current zone</td>
+            <td class="border border-zinc-500 p-2">!throw [item]</td>
+            <td class="border border-zinc-500 p-2">Discard an item in your current zone</td>
           </tr>
           <tr>
             <td class="border border-zinc-500 p-2">🎁</td>

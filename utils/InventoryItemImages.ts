@@ -1,4 +1,8 @@
-export const InventoryItemImages = {
+type InventoryImageKeyValuePair = {
+  [key: string]: string;
+};
+
+export const InventoryItemImages: InventoryImageKeyValuePair = {
   "🐥": "🐥",
   avocado: "🥑",
   banana: "🍌",
