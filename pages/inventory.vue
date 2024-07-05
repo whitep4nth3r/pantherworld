@@ -52,6 +52,14 @@ const locationBg = computed(() => {
   }
 });
 
+const population = computed(() => {
+  if (data.value?.inventory.players_in_zone > 0) {
+    return `(pop. ${data.value?.inventory.players_in_zone})`;
+  }
+
+  return "";
+});
+
 const spawnDaysAgo = computed(() => {
   if (data.value?.inventory.spawn_date !== null) {
     const today = new Date();
@@ -111,7 +119,7 @@ const spawnDaysAgo = computed(() => {
         :icon="`/icons/zones/${data.inventory.location.replace(' ', '-').toLowerCase()}.svg`"
         :iconAlt="data.inventory.location"
         :topText="data.inventory.location"
-        bottomText="Zone" />
+        :bottomText="`Zone ${population}`" />
       <InventoryInfoItem
         icon="/icons/utils/move.svg"
         iconAlt="Arrow pointing right to straight vertical line"
