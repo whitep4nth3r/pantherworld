@@ -20,6 +20,7 @@ const { loggedIn, user, session, clear } = useUserSession();
 
 const nuxtApp = useNuxtApp();
 
+// TODO — call refresh on setInterval on e.g. home page for 'latest data'
 const { status, data, error, refresh } = await useFetch(`inventory/`, {
   baseURL: config.public.world_api_url,
   headers: {
@@ -49,6 +50,31 @@ const locationBg = computed(() => {
     default:
       return "";
   }
+});
+
+const spawnDaysAgo = computed(() => {
+  if (data.value?.inventory.spawn_date !== null) {
+    const today = new Date();
+    const spawnedOn = new Date(data.value?.inventory.spawn_date);
+    const msInDay = 24 * 60 * 60 * 1000;
+
+    spawnedOn.setHours(0, 0, 0, 0);
+    today.setHours(0, 0, 0, 0);
+
+    const diff = (+today - +spawnedOn) / msInDay;
+    let text;
+
+    if (diff === 0) {
+      text = "Earlier today";
+    } else if (diff === 1) {
+      text = "Yesterday";
+    } else {
+      text = `${diff} days ago`;
+    }
+    return text;
+  }
+
+  return "Unavailable";
 });
 </script>
 
@@ -89,8 +115,8 @@ const locationBg = computed(() => {
       <InventoryInfoItem
         icon="/icons/utils/move.svg"
         iconAlt="Arrow pointing right to straight vertical line"
-        topText="Date TBC"
-        bottomText="Last moved" />
+        :topText="spawnDaysAgo"
+        bottomText="Spawned" />
       <InventoryInfoItem
         icon="/icons/utils/pack.svg"
         iconAlt="Backpack"
