@@ -27,6 +27,7 @@ const { status, data, error, refresh } = await useFetch(`inventory/`, {
   },
   onResponse(context) {
     if (context.response.status === 401) {
+      clear();
       return nuxtApp.runWithContext(() => navigateTo("/"));
     }
   },
