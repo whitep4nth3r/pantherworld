@@ -61,28 +61,26 @@ const population = computed(() => {
 });
 
 const spawnDaysAgo = computed(() => {
-  if (data.value?.inventory.spawn_date !== null) {
-    const today = new Date();
-    const spawnedOn = new Date(data.value?.inventory.spawn_date);
-    const msInDay = 24 * 60 * 60 * 1000;
-
-    spawnedOn.setHours(0, 0, 0, 0);
-    today.setHours(0, 0, 0, 0);
-
-    const diff = (+today - +spawnedOn) / msInDay;
-    let text;
-
-    if (diff === 0) {
-      text = "Earlier today";
-    } else if (diff === 1) {
-      text = "Yesterday";
-    } else {
-      text = `${diff} days ago`;
-    }
-    return text;
+  if (!data.value?.inventory.spawn_date) {
+      return "Unavailable";
   }
+  const today = new Date();
+  const spawnedOn = new Date(data.value?.inventory.spawn_date);
+  const msInDay = 24 * 60 * 60 * 1000;
 
-  return "Unavailable";
+  spawnedOn.setHours(0, 0, 0, 0);
+  today.setHours(0, 0, 0, 0);
+
+  const diff = (+today - +spawnedOn) / msInDay;
+
+  if (diff === 0) {
+    return "Earlier today";
+  }
+  if (diff === 1) {
+    return "Yesterday";
+  }
+  
+  return `${diff} days ago`;
 });
 
 onMounted(() => {
