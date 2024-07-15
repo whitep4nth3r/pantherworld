@@ -20,10 +20,10 @@ const { loggedIn, user, session, clear } = useUserSession();
 
 const nuxtApp = useNuxtApp();
 
-const { status, data, error, refresh } = await useFetch(`inventory/`, {
+const { status, data, error, refresh } = await useFetch<InventoryResponse>(`inventory/`, {
   baseURL: config.public.world_api_url,
   headers: {
-    token: user.value?.accessToken,
+    token: user.value!.accessToken,
   },
   onResponse(context) {
     if (context.response.status === 401) {
@@ -53,7 +53,7 @@ const locationBg = computed(() => {
 });
 
 const population = computed(() => {
-  if (data.value?.inventory.players_in_zone > 0) {
+  if (data.value!.inventory.players_in_zone > 0) {
     return `(${data.value?.inventory.players_in_zone})`;
   }
 
@@ -62,7 +62,7 @@ const population = computed(() => {
 
 const spawnDaysAgo = computed(() => {
   if (!data.value?.inventory.spawn_date) {
-      return "Unavailable";
+    return "Unavailable";
   }
   const today = new Date();
   const spawnedOn = new Date(data.value?.inventory.spawn_date);
@@ -79,7 +79,7 @@ const spawnDaysAgo = computed(() => {
   if (diff === 1) {
     return "Yesterday";
   }
-  
+
   return `${diff} days ago`;
 });
 
@@ -93,7 +93,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
+  <div v-if="data.inventory !== null">
     <section
       class="flex flex-col rounded-lg p-6 justify-center items-center align gap-2 bg-gradient-to-b to-zinc-950 relative"
       :class="locationBg">

@@ -1,30 +1,4 @@
 <script setup lang="ts">
-type LeaderBoardPlayer = {
-  username: string;
-  items: number;
-};
-
-type SpawnedItem = {
-  name: string;
-  number?: number;
-  zone?: string;
-  createdAt?: Date;
-  rarity: number;
-};
-
-type Population = {
-  [key: string]: number;
-};
-
-// TODO — type data response from useFetch as this
-type MetaResponse = {
-  leaderboard: LeaderBoardPlayer[];
-  latestSpawned: SpawnedItem;
-  mostSpawned: SpawnedItem;
-  leastSpawned: SpawnedItem;
-  population: Population;
-};
-
 const config = useRuntimeConfig();
 
 useSeoMeta({
@@ -32,7 +6,7 @@ useSeoMeta({
   description: "The game doesn't stop when the stream ends.",
 });
 
-const { status, data, error, refresh } = await useFetch(`meta/`, {
+const { status, data, error, refresh } = await useFetch<MetaResponse | null>(`meta/`, {
   baseURL: config.public.world_api_url,
 });
 
@@ -49,15 +23,15 @@ onMounted(() => {
 //   return `${createdAt.getDate()} ${DateUtils.getMonthStringFromInt(createdAt.getMonth())} ${createdAt.getFullYear()} ${createdAt.getHours()}:${DateUtils.addLeadingZero(createdAt.getMinutes())}:${createdAt.getSeconds()}`;
 // });
 
-const locationBgClass = {
+type locationKeyValue = { [key: string]: string };
+
+const locationBgClass: locationKeyValue = {
   mountain: "from-indigo-400",
   forest: "from-emerald-400",
   swamp: "from-lime-400",
   city: "from-cyan-400",
   desert: "from-yellow-400",
 };
-
-const emojis = ["🥇", "🥈", "🥉"];
 </script>
 
 <template>
@@ -78,18 +52,10 @@ const emojis = ["🥇", "🥈", "🥉"];
       >Play now</a
     >
   </section>
-  <section class="mb-16" v-auto-animate>
-    <h2 class="font-bold uppercase text-xl">Leaderboard</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 my-4">
-      <div v-for="(player, key) in data.meta.leaderboard" :key="player.username">
-        <p class="flex gap-1 text-xl">
-          <span>{{ emojis[key] }}</span
-          >{{ player.items }} @{{ player.username }}
-        </p>
-      </div>
-    </div>
+  <section class="mb-16" v-auto-animate v-if="data !== null">
+    <Leaderboard :players="data.meta.leaderboard" />
   </section>
-  <section class="mb-16 grid grid-cols-1 sm:grid-cols-3 gap-3 my-4" v-auto-animate>
+  <section class="mb-16 grid grid-cols-1 sm:grid-cols-3 gap-3 my-4" v-auto-animate v-if="data !== null">
     <div>
       <p class="font-bold uppercase text-lg mb-4">Latest Spawn ({{ data.meta.latestSpawned.zone }})</p>
       <!-- <p>@ {{ latestSpawnedDate }}</p> -->
@@ -111,7 +77,7 @@ const emojis = ["🥇", "🥈", "🥉"];
     </div>
   </section>
 
-  <section class="mb-16" v-auto-animate>
+  <section class="mb-16" v-auto-animate v-if="data !== null">
     <h2 class="font-bold uppercase text-xl">Current Population</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4" v-auto-animate>
       <InventoryInfoItem
