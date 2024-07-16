@@ -18,7 +18,7 @@ For everything from pull requests, bug reports, features requests and code revie
 
 ## 💡 Questions
 
-The [The Claw Discord](https://discord.gg/theclaw) or [Whitep4nth3r's twitch chat](https://www.twitch.tv/whitep4nth3r) are the places to be for any questions regarding the code or p4nth3rworld itself. 
+The [The Claw Discord](https://discord.gg/theclaw) or [whitep4nth3r's twitch chat](https://www.twitch.tv/whitep4nth3r) are the places to be for any questions regarding the code or p4nth3rworld itself. 
 Please don't open issues for questions to not create any clutter.
 
 ## 📥 Opening an Issue
