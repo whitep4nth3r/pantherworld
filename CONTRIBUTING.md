@@ -41,6 +41,8 @@ We very much welcome feature requests! But do keep in mind that not every featur
 
 We very much welcome pull requests, and as previously mentioned, very much encourage people to create pull requests for features or issues they encountered themselves!
 
-- **Make isolated changes** When making a pull request make sure that all the changes within it are solely about this one feature or bug fix. Don't include multiple issues or features
+- **Make isolated changes** When making a pull request make sure that all the changes within it are solely about this one feature or bug fix. Do not include multiple issues or features. 
+
+Try to follow existing patterns in the existing code when submitting a pull request. PRs completely refactoring the whole code style of the project will not be accepted.
 
 - **Use the repo's main branch.** Branch from and [submit your pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork) to the repo's `main` branch. 
