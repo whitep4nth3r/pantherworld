@@ -23,7 +23,7 @@ Please don't open issues for questions about how to play the game.
 
 ## 📥 Opening an Issue
 
-If you find any issues with the p4nth3rworld site or p4nth3rworld the game we would love a well-written report!
+If you find any issues with the [p4nth3rworld front end app](https://p4nth3r.world) or p4nth3rworld the game, we would love a well-written report!
 
 - **Do not open a duplicate issue!** Search through existing issues to see if your issue has previously been reported. If your issue exists, comment with any additional information you have. You may simply note "I have this problem too", which helps prioritize the most common problems and requests. 
 
