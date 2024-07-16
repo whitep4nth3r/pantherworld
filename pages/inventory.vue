@@ -93,7 +93,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div v-if="data">
+  <div v-if="data?.inventory">
     <section
       class="flex flex-col rounded-lg p-6 justify-center items-center align gap-2 bg-gradient-to-b to-zinc-950 relative"
       :class="locationBg">
