@@ -93,7 +93,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div v-if="data.inventory !== null">
+  <div v-if="data">
     <section
       class="flex flex-col rounded-lg p-6 justify-center items-center align gap-2 bg-gradient-to-b to-zinc-950 relative"
       :class="locationBg">
@@ -144,7 +144,7 @@ onMounted(() => {
         :bottomText="`Rarity ${data.inventory.items[0].rarity}`" />
     </section>
 
-    <section class="my-4" v-if="data">
+    <section class="my-4">
       <ol v-if="data.inventory.items.length > 0" class="grid grid-cols-2 sm:grid-cols-3 gap-3" v-auto-animate>
         <InventoryItem
           v-for="item in data.inventory.items"
