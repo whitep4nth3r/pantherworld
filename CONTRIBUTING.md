@@ -27,7 +27,7 @@ If you find any issues with the p4nth3rworld site or p4nth3rworld the game we wo
 
 - **Do not open a duplicate issue!** Search through existing issues to see if your issue has previously been reported. If your issue exists, comment with any additional information you have. You may simply note "I have this problem too", which helps prioritize the most common problems and requests. 
 
-- **Prefer the use of [reactions](https://github.blog/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/)**, not comments, if you simply want to "+1" an existing issue.
+- **The use of [reactions](https://github.blog/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/)** instead of comments is preferred, if you simply want to "+1" an existing issue.
 
 - **Provide as much information as you can.** We don't have a  bug report template, just be thorough with your report and if possible add some images. It's also very usefull to add your twitch username if it differs from your github one!
 
