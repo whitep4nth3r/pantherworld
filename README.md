@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c4d8b097-e089-4d54-acda-b29415724c2d/deploy-status)](https://app.netlify.com/sites/pantherworld/deploys)
+
 # Welcome to p4nth3r.world
 
 ## The game doesn't stop when the stream ends
