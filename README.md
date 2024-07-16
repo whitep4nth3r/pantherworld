@@ -1,4 +1,4 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/c4d8b097-e089-4d54-acda-b29415724c2d/deploy-status)](https://app.netlify.com/sites/pantherworld/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/716a95d1-9f46-4ade-a547-c55d11b3bcb4/deploy-status)](https://app.netlify.com/sites/pantherworld/deploys)
 
 # Welcome to p4nth3r.world
 
