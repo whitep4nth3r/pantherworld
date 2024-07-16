@@ -4,11 +4,11 @@
 
 ### Contents
 
-- [General Guidelines](#📖-general-guidelines)
-- [Questions](#💡-questions)
-- [Opening an Issue](#📥-opening-an-issue)
-- [Feature Requests](#💌-feature-requests)
-- [Submitting Pull Requests](#🔁-submitting-pull-requests)
+- [General Guidelines](#-general-guidelines)
+- [Questions](#-questions)
+- [Opening an Issue](#-opening-an-issue)
+- [Feature Requests](#-feature-requests)
+- [Submitting Pull Requests](#-submitting-pull-requests)
 
 ## 📖 General Guidelines
 
