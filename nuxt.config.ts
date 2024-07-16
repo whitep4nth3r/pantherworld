@@ -2,7 +2,6 @@
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
-      twitch_client_id: "", // NUXT_PUBLIC_TWITCH_CLIENT_ID
       world_api_url: "https://p4nth3rb0t-mainframe.herokuapp.com/world/", // NUXT_WORLD_API_URL
       // world_api_url: "http://localhost:8999/world/", // NUXT_WORLD_API_URL
     },
