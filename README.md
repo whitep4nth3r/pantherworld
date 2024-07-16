@@ -5,7 +5,7 @@
 ## The game doesn't stop when the stream ends
 
 p4nth3rworld is a multiplayer text-based game powered by a live coding stream at
-[twitch.tv/whitep4nth3r](twitch.tv/whitep4nth3r).
+[twitch.tv/whitep4nth3r](https://twitch.tv/whitep4nth3r).
 
 [Learn how to play the game](https://p4nth3r.world/manual)
 
