@@ -99,7 +99,7 @@ onMounted(() => {
       :class="locationBg">
       <button
         type="button"
-        @click="refresh"
+        @click="refresh()"
         aria-label="Refresh inventory"
         class="m-auto p-2 rounded-full bg-zinc-600 s-14 text-2xl leading-none absolute top-2 right-2 focus:bg-emerald-700 active:bg-emerald-700 focus:outline-none focus:ring focus:ring-emerald-300">
         <img
