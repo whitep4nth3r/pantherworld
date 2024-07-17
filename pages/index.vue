@@ -56,19 +56,19 @@ const locationBgClass: locationKeyValue = {
     <Leaderboard :players="data.meta.leaderboard" />
   </section>
   <section class="mb-16 grid grid-cols-1 sm:grid-cols-3 gap-3 my-4" v-auto-animate v-if="data !== null">
-    <div>
+    <div class="flex flex-col justify-between">
       <p class="font-bold uppercase text-lg mb-4">Latest Spawn ({{ data.meta.latestSpawned.zone }})</p>
       <!-- <p>@ {{ latestSpawnedDate }}</p> -->
       <InventoryItem :name="data.meta.latestSpawned.name" :rarity="data.meta.latestSpawned.rarity" />
     </div>
-    <div>
+    <div class="flex flex-col justify-between">
       <p class="font-bold uppercase text-lg mb-4">Most Spawned</p>
       <InventoryItem
         :name="data.meta.mostSpawned.name"
         :count="data.meta.mostSpawned.number"
         :rarity="data.meta.mostSpawned.rarity" />
     </div>
-    <div>
+    <div class="flex flex-col justify-between">
       <p class="font-bold uppercase text-lg mb-4">Least Spawned</p>
       <InventoryItem
         :name="data.meta.leastSpawned.name"
