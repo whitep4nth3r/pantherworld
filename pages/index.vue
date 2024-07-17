@@ -79,7 +79,7 @@ const locationBgClass: locationKeyValue = {
 
   <section class="mb-16" v-auto-animate v-if="data !== null">
     <h2 class="font-bold uppercase text-xl">Current Population</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4" v-auto-animate>
+    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4" v-auto-animate>
       <InventoryInfoItem
         v-for="(count, zone) in data.meta.population"
         class="bg-gradient-to-bl via-zinc-950 via-50% to-zinc-950 to-100%"
@@ -91,7 +91,7 @@ const locationBgClass: locationKeyValue = {
         :iconAlt="zone.toString()"
         :topText="zone"
         :bottomText="`Zone ${count}`" />
-    </div>
+    </ul>
   </section>
 </template>
 

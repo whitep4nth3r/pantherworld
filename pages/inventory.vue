@@ -145,14 +145,14 @@ onMounted(() => {
     </section>
 
     <section class="my-4">
-      <ol v-if="data.inventory.items.length > 0" class="grid grid-cols-2 sm:grid-cols-3 gap-3" v-auto-animate>
+      <div v-if="data.inventory.items.length > 0" class="grid grid-cols-2 sm:grid-cols-3 gap-3" v-auto-animate>
         <InventoryItem
           v-for="item in data.inventory.items"
           :key="item.name"
           :name="item.name"
           :count="item.count"
           :rarity="item.rarity" />
-      </ol>
+      </div>
 
       <h2
         v-if="data.inventory.items.length === 0"
