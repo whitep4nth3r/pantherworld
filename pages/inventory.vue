@@ -33,8 +33,11 @@ const { status, data, error, refresh } = await useFetch<InventoryResponse>(`inve
   },
 });
 
+
 const locationBg = computed(() => {
   switch (data.value?.inventory.location) {
+    case "beach":
+      return "from-orange-400";
     case "mountain":
       return "from-indigo-400";
     case "forest":

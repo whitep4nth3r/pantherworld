@@ -26,6 +26,7 @@ onMounted(() => {
 type locationKeyValue = { [key: string]: string };
 
 const locationBgClass: locationKeyValue = {
+  beach: "from-orange-400",
   mountain: "from-indigo-400",
   forest: "from-emerald-400",
   swamp: "from-lime-400",
