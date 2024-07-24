@@ -33,7 +33,6 @@ const { status, data, error, refresh } = await useFetch<InventoryResponse>(`inve
   },
 });
 
-
 const locationBg = computed(() => {
   switch (data.value?.inventory.location) {
     case "beach":
@@ -140,11 +139,10 @@ onMounted(() => {
         :topText="data.inventory.total"
         bottomText="Items" />
       <InventoryInfoItem
-        v-if="data.inventory.items.length > 0"
         icon="/icons/utils/trophy.svg"
-        iconAlt="Trophy"
-        :topText="data.inventory.items[0].name"
-        :bottomText="`Rarity ${data.inventory.items[0].rarity}`" />
+        iconAlt="Backpack"
+        :topText="data.inventory.wealth_index"
+        bottomText="Wealth Index" />
     </section>
 
     <section class="my-4">

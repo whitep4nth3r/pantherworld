@@ -3,7 +3,7 @@ declare global {
     username: string;
     image_url: string;
     items: number;
-    wealthIndex: number;
+    wealth_index: number;
   };
 
   type SpawnedItem = {
@@ -42,6 +42,7 @@ declare global {
       location: string;
       spawn_date: Date | null;
       players_in_zone: number;
+      wealth_index: number;
     };
   }
 }
