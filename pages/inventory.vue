@@ -141,7 +141,7 @@ onMounted(() => {
       <InventoryInfoItem
         icon="/icons/utils/trophy.svg"
         iconAlt="Backpack"
-        :topText="data.inventory.wealth_index"
+        :topText="Intl.NumberFormat().format(data.inventory.wealth_index)"
         bottomText="Wealth Index" />
     </section>
 
