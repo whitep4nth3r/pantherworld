@@ -4,11 +4,11 @@ const props = defineProps<{
 }>();
 
 function sortByWealthIndexDesc(a: LeaderBoardPlayer, b: LeaderBoardPlayer) {
-  if (a.wealthIndex > b.wealthIndex) {
+  if (a.wealth_index > b.wealth_index) {
     return -1;
   }
 
-  if (b.wealthIndex > a.wealthIndex) {
+  if (b.wealth_index > a.wealth_index) {
     return 1;
   }
 

@@ -19,6 +19,6 @@ const props = defineProps<{
       ]" />
     <p class="font-bold">@{{ player.username }}</p>
     <p>{{ Intl.NumberFormat().format(player.items) }} items</p>
-    <p>Wealth Index: {{ Intl.NumberFormat().format(player.wealthIndex) }}</p>
+    <p>Wealth Index: {{ Intl.NumberFormat().format(player.wealth_index) }}</p>
   </div>
 </template>
