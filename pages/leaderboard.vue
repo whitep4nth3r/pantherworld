@@ -7,7 +7,7 @@ definePageMeta({
 
 useSeoMeta({
   title: "Leaderboard",
-  description: "View the full p4nth3rworld leaderboard",
+  description: "Where do you rank?",
 });
 
 const { status, data, error, refresh } = await useFetch<FullLeaderboardResponse | null>(`leaderboard/`, {
@@ -21,8 +21,6 @@ onMounted(() => {
     }
   });
 });
-
-console.log(data.value);
 </script>
 
 <template>
