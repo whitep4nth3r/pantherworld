@@ -1,4 +1,16 @@
 declare global {
+  export type FullLeaderboardPlayer = {
+    username: string;
+    items: number;
+    wealth_index: number;
+  };
+
+  export type FullLeaderboardResponse = {
+    leaderboard: {
+      players: FullLeaderboardPlayer[];
+    };
+  };
+
   type LeaderBoardPlayer = {
     username: string;
     image_url: string;
@@ -20,7 +32,6 @@ declare global {
 
   interface MetaResponse {
     meta: {
-      leaderboard: LeaderBoardPlayer[];
       latestSpawned: SpawnedItem;
       mostSpawned: SpawnedItem;
       leastSpawned: SpawnedItem;
