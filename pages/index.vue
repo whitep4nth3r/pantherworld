@@ -53,9 +53,6 @@ const locationBgClass: locationKeyValue = {
       >Play now</a
     >
   </section>
-  <section class="mb-16" v-auto-animate v-if="data !== null">
-    <Leaderboard :players="data.meta.leaderboard" />
-  </section>
   <section class="mb-16 grid grid-cols-1 sm:grid-cols-3 gap-3 my-4" v-auto-animate v-if="data !== null">
     <div class="flex flex-col justify-between">
       <p class="font-bold uppercase text-lg mb-4">Latest Spawn ({{ data.meta.latestSpawned.zone }})</p>

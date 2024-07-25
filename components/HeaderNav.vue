@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { getQuery } from "ufo";
 const config = useRuntimeConfig();
 const { loggedIn, user, session, clear } = useUserSession();
 
@@ -12,19 +11,26 @@ function logout() {
 <template>
   <header class="flex justify-between items-center mb-6">
     <nav class="text-xl font-bold flex flex-col sm:flex-row gap-4">
-      <NuxtLink href="/" class="p-2 focus:outline-none focus:ring focus:ring-emerald-300 rounded-lg">Home</NuxtLink>
-      <NuxtLink href="/manual" class="p-2 focus:outline-none focus:ring focus:ring-emerald-300 rounded-lg"
+      <NuxtLink href="/" class="text-base p-2 focus:outline-none focus:ring focus:ring-emerald-300 rounded-lg"
+        >Home</NuxtLink
+      >
+      <NuxtLink href="/manual" class="text-base p-2 focus:outline-none focus:ring focus:ring-emerald-300 rounded-lg"
         >How to play</NuxtLink
       >
       <NuxtLink
         href="/inventory"
-        class="p-2 focus:outline-none focus:ring focus:ring-emerald-300 rounded-lg"
+        class="text-base p-2 focus:outline-none focus:ring focus:ring-emerald-300 rounded-lg"
         v-if="loggedIn"
         >Inventory</NuxtLink
       >
+      <NuxtLink
+        href="/leaderboard"
+        class="text-base p-2 focus:outline-none focus:ring focus:ring-emerald-300 rounded-lg"
+        >Leaderboard</NuxtLink
+      >
       <a
         href="https://github.com/whitep4nth3r/pantherworld/issues"
-        class="p-2 focus:outline-none focus:ring focus:ring-emerald-300 rounded-lg"
+        class="text-base p-2 focus:outline-none focus:ring focus:ring-emerald-300 rounded-lg"
         target="_blank"
         >GitHub</a
       >
