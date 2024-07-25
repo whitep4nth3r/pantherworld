@@ -11,7 +11,7 @@ const irradiated = computed(() => props.name.includes("irradiated"));
 
 <template>
   <div
-    class="flex flex-col gap-1 bg-zinc-800 rounded-lg relative text-center p-4 bg-gradient-to-t via-10% to-zinc-800 to-60%"
+    class="flex flex-col flex-grow gap-1 bg-zinc-800 rounded-lg relative text-center p-4 bg-gradient-to-t via-10% to-zinc-800 to-60%"
     :class="{ 'from-lime-600 via-lime-800': irradiated }">
     <span v-if="displayCount" class="absolute text-white bg-zinc-600 rounded-xl py1 px-2 left-2 -top-2 italic font-bold"
       >{{ count }}x</span

@@ -53,21 +53,27 @@ const locationBgClass: locationKeyValue = {
       >Play now</a
     >
   </section>
+  <section v-auto-animate v-if="data !== null" class="mb-16 grid grid-cols-2 gap-2">
+    <PlayerCard title="Latest claim" :player="data.meta.latestClaim.player" :item="data.meta.latestClaim.item" />
+    <PlayerCard title="Newest player" :player="data.meta.newestPlayer" />
+  </section>
   <section class="mb-16 grid grid-cols-1 sm:grid-cols-3 gap-3 my-4" v-auto-animate v-if="data !== null">
     <div class="flex flex-col justify-between">
-      <p class="font-bold uppercase text-lg mb-4">Latest Spawn ({{ data.meta.latestSpawned.zone }})</p>
+      <p class="font-bold uppercase text-lg mb-4 bg-yellow-400 text-zinc-900 text-center rounded-lg">
+        Latest Spawn ({{ data.meta.latestSpawned.zone }})
+      </p>
       <!-- <p>@ {{ latestSpawnedDate }}</p> -->
       <InventoryItem :name="data.meta.latestSpawned.name" :rarity="data.meta.latestSpawned.rarity" />
     </div>
     <div class="flex flex-col justify-between">
-      <p class="font-bold uppercase text-lg mb-4">Most Spawned</p>
+      <p class="font-bold uppercase text-lg mb-4 bg-yellow-400 text-zinc-900 text-center rounded-lg">Most Spawned</p>
       <InventoryItem
         :name="data.meta.mostSpawned.name"
         :count="data.meta.mostSpawned.number"
         :rarity="data.meta.mostSpawned.rarity" />
     </div>
     <div class="flex flex-col justify-between">
-      <p class="font-bold uppercase text-lg mb-4">Least Spawned</p>
+      <p class="font-bold uppercase text-lg mb-4 bg-yellow-400 text-zinc-900 text-center rounded-lg">Least Spawned</p>
       <InventoryItem
         :name="data.meta.leastSpawned.name"
         :count="data.meta.leastSpawned.number"
@@ -76,7 +82,7 @@ const locationBgClass: locationKeyValue = {
   </section>
 
   <section class="mb-16" v-auto-animate v-if="data !== null">
-    <h2 class="font-bold uppercase text-xl">Current Population</h2>
+    <h2 class="font-bold uppercase text-xl bg-yellow-400 text-zinc-900 text-center rounded-lg">Current Population</h2>
     <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4" v-auto-animate>
       <InventoryInfoItem
         v-for="(count, zone) in data.meta.population"

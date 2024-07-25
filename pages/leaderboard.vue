@@ -22,9 +22,7 @@ onMounted(() => {
   });
 });
 
-const { loggedIn, user, session, clear } = useUserSession();
-
-// ${user?.name}
+const { user } = useUserSession();
 </script>
 
 <template>

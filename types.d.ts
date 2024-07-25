@@ -30,12 +30,32 @@ declare global {
     [key: string]: number;
   };
 
+  type PlayerWithItem = {
+    player: {
+      username: string;
+      image_url: string;
+    };
+    item: {
+      name: string;
+      rarity: number;
+      zone: string;
+    };
+  };
+
+  export type NewestPlayer = {
+    username: string;
+    image_url: string;
+    zone: string;
+  };
+
   interface MetaResponse {
     meta: {
       latestSpawned: SpawnedItem;
       mostSpawned: SpawnedItem;
       leastSpawned: SpawnedItem;
       population: Population;
+      latestClaim: PlayerWithItem;
+      newestPlayer: NewestPlayer;
     };
   }
 
