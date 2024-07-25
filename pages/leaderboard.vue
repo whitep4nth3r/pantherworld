@@ -32,32 +32,26 @@ const { loggedIn, user, session, clear } = useUserSession();
     <table class="m-auto table-auto text-left">
       <thead>
         <tr>
-          <th class="border border-slate-300 p-2">Rank</th>
-          <th class="border border-slate-300 p-2">Username</th>
-          <th class="border border-slate-300 p-2">Items</th>
-          <th class="border border-slate-300 p-2">Wealth index</th>
+          <th scope="col" class="border border-slate-300 p-2">Rank</th>
+          <th scope="col" class="border border-slate-300 p-2">Username</th>
+          <th scope="col" class="border border-slate-300 p-2">Items</th>
+          <th scope="col" class="border border-slate-300 p-2">Wealth index</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(player, index) in data!.leaderboard.players">
-          <td
-            class="border border-slate-300 p-2"
-            :class="{ 'bg-violet-700 text-white': user?.name === player.username }">
+        <tr
+          v-for="(player, index) in data!.leaderboard.players"
+          :class="{ 'bg-violet-700 text-white': user?.name === player.username }">
+          <td class="border border-slate-300 p-2">
             {{ index + 1 }}
           </td>
-          <td
-            class="border border-slate-300 p-2"
-            :class="{ 'bg-violet-700 text-white': user?.name === player.username }">
+          <td class="border border-slate-300 p-2">
             {{ player.username }}
           </td>
-          <td
-            class="border border-slate-300 p-2"
-            :class="{ 'bg-violet-700 text-white': user?.name === player.username }">
+          <td class="border border-slate-300 p-2">
             {{ player.items }}
           </td>
-          <td
-            class="border border-slate-300 p-2"
-            :class="{ 'bg-violet-700 text-white': user?.name === player.username }">
+          <td class="border border-slate-300 p-2">
             {{ player.wealth_index }}
           </td>
         </tr>
