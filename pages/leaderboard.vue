@@ -39,26 +39,26 @@ const { user } = useUserSession();
         </tr>
       </thead>
       <tbody class="bg-black/90 divide-y divide-zinc-500">
-        <tr
-          v-for="(player, index) in data!.leaderboard.players"
-          :key="player.username"
-          :class="{ 'bg-violet-700 text-white': user?.name === player.username }">
-          <td class="px-6 py-3 whitespace-nowrap">
-            <span v-if="index === 0">🥇</span>
-            <span v-else-if="index === 1">🥈</span>
-            <span v-else-if="index === 2">🥉</span>
-            <span v-else>{{ index + 1 }}</span>
-          </td>
-          <td class="px-6 py-3 whitespace-nowrap flex items-center text-zinc-100">
-            {{ player.username }}
-          </td>
-          <td class="px-6 py-3 whitespace-nowrap text-zinc-100">
-            {{ player.items }}
-          </td>
-          <td class="px-6 py-3 whitespace-nowrap text-zinc-100">
-            {{ player.wealth_index }}
-          </td>
-        </tr>
+      <tr
+        v-for="(player, index) in data!.leaderboard.players.filter(p => !['Matty_nShoes','Matty_TwoShoes'].includes(p.username))"
+        :key="player.username"
+        :class="{ 'bg-violet-700 text-white': user?.name === player.username }">
+        <td class="px-6 py-3 whitespace-nowrap">
+          <span v-if="index === 0">🥇</span>
+          <span v-else-if="index === 1">🥈</span>
+          <span v-else-if="index === 2">🥉</span>
+          <span v-else>{{ index + 1 }}</span>
+        </td>
+        <td class="px-6 py-3 whitespace-nowrap flex items-center text-zinc-100">
+          {{ player.username }}
+        </td>
+        <td class="px-6 py-3 whitespace-nowrap text-zinc-100">
+          {{ player.items }}
+        </td>
+        <td class="px-6 py-3 whitespace-nowrap text-zinc-100">
+          {{ player.wealth_index }}
+        </td>
+      </tr>
       </tbody>
     </table>
   </section>
