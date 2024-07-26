@@ -26,8 +26,10 @@ const { user } = useUserSession();
 </script>
 
 <template>
+  <h1 class="text-4xl font-bold mb-12">Leaderboard</h1>
+
   <section>
-    <table class="m-auto table-auto text-left">
+    <table class="m-auto w-full table-auto text-left">
       <thead>
         <tr>
           <th scope="col" class="border border-slate-300 p-2">Rank</th>

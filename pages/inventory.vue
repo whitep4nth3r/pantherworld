@@ -95,6 +95,8 @@ onMounted(() => {
 </script>
 
 <template>
+  <h1 class="text-4xl font-bold mb-12">Inventory</h1>
+
   <div v-if="data?.inventory">
     <section
       class="flex flex-col rounded-lg p-6 justify-center items-center align gap-2 bg-gradient-to-b to-zinc-950 relative"

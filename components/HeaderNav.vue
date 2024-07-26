@@ -1,4 +1,8 @@
 <script setup lang="ts">
+const props = defineProps<{
+  title: string;
+}>();
+
 const config = useRuntimeConfig();
 const { loggedIn, user, session, clear } = useUserSession();
 
@@ -22,6 +26,8 @@ const open = useState("open", () => false);
         <img src="/icons/menu/burger.svg" alt="an actual hamburger" height="44" width="44" />
       </button>
 
+      <p class="flex self-center font-bold">p4nth3r.world</p>
+
       <nav
         class="text-xl font-bold flex flex-col gap-2 bg-zinc-700 w-full absolute top-16 rounded-lg py-4 z-50"
         v-if="open">
@@ -29,12 +35,14 @@ const open = useState("open", () => false);
           href="/"
           @click="() => (open = false)"
           class="text-base p-2 focus:outline-none focus:ring focus:ring-emerald-300 rounded-lg"
+          :class="{ underline: title === 'index' }"
           >Home</NuxtLink
         >
         <NuxtLink
           href="/manual"
           @click="() => (open = false)"
           class="text-base p-2 focus:outline-none focus:ring focus:ring-emerald-300 rounded-lg"
+          :class="{ underline: title === 'manual' }"
           >How to play</NuxtLink
         >
         <NuxtLink
@@ -42,12 +50,14 @@ const open = useState("open", () => false);
           @click="() => (open = false)"
           class="text-base p-2 focus:outline-none focus:ring focus:ring-emerald-300 rounded-lg"
           v-if="loggedIn"
+          :class="{ underline: title === 'inventory' }"
           >Inventory</NuxtLink
         >
         <NuxtLink
           href="/leaderboard"
           @click="() => (open = false)"
           class="text-base p-2 focus:outline-none focus:ring focus:ring-emerald-300 rounded-lg"
+          :class="{ underline: title === 'leaderboard' }"
           >Leaderboard</NuxtLink
         >
         <a

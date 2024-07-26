@@ -18,7 +18,7 @@ useHead({
 </script>
 
 <template>
-  <HeaderNav />
+  <HeaderNav :title="route.name as string" />
   <main>
     <NuxtRouteAnnouncer />
     <NuxtPage />

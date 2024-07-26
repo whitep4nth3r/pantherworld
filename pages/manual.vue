@@ -10,9 +10,7 @@ useSeoMeta({
 
 <template>
   <div>
-    <section class="mb-12">
-      <h1 class="text-4xl font-bold">How to play p4nth3rworld</h1>
-    </section>
+    <h1 class="text-4xl font-bold mb-12">How to play p4nth3rworld</h1>
 
     <section>
       <p class="text-base mb-2">
