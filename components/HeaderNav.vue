@@ -21,7 +21,9 @@ const open = useState("open", () => false);
         <img src="/icons/menu/burger.svg" alt="an actual burger" height="44" width="44" />
       </button>
 
-      <nav class="text-xl font-bold flex flex-col gap-4 bg-white text-black w-full absolute top-12" v-if="open">
+      <nav
+        class="text-xl font-bold flex flex-col gap-2 bg-zinc-700 w-full absolute top-16 rounded-lg py-4 z-50"
+        v-if="open">
         <NuxtLink href="/" class="text-base p-2 focus:outline-none focus:ring focus:ring-emerald-300 rounded-lg"
           >Home</NuxtLink
         >
