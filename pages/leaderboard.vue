@@ -40,7 +40,7 @@ const { user } = useUserSession();
       </thead>
       <tbody class="bg-black/90 divide-y divide-zinc-500">
         <tr
-          v-for="(player, index) in data!.leaderboard.players"
+          v-for="(player, index) in data!.leaderboard.players.filter(p => !['Matty_nShoes','Matty_TwoShoes'].includes(p.username))"
           :key="player.username"
           :class="{ 'bg-violet-700 text-white': user?.name === player.username }">
           <td class="px-6 py-3 whitespace-nowrap">
