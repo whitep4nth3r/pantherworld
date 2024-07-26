@@ -22,7 +22,7 @@ const props = defineProps<{
     </h2>
     <div class="flex flex-row gap-4 justify-center">
       <div
-        class="flex flex-col items-center justify-between gap-2"
+        class="flex items-center justify-between gap-2"
         :class="[{ 'flex-row': item !== undefined }, { 'flex-col': item === undefined }]">
         <img
           :src="player.image_url"

@@ -22,7 +22,7 @@ const irradiated = computed(() => props.name.includes("irradiated"));
         {{ InventoryItemImages[name.replace(" ", "-")] }}
       </template>
 
-      <img v-else src="/icons/items/grape.svg" height="24" width="24" :alt="name" />
+      <img v-else src="/icons/items/circle.svg" height="24" width="24" :alt="name" />
     </span>
     <span class="text-white text-lg capitalize">{{ name }}</span>
     <span class="text-white">{{ rarity }}</span>
