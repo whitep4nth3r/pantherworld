@@ -18,11 +18,6 @@ onMounted(() => {
   });
 });
 
-// const latestSpawnedDate = computed(() => {
-//   const createdAt = new Date(data.value?.meta.latestSpawned.createdAt);
-//   return `${createdAt.getDate()} ${DateUtils.getMonthStringFromInt(createdAt.getMonth())} ${createdAt.getFullYear()} ${createdAt.getHours()}:${DateUtils.addLeadingZero(createdAt.getMinutes())}:${createdAt.getSeconds()}`;
-// });
-
 type locationKeyValue = { [key: string]: string };
 
 const locationBgClass: locationKeyValue = {
