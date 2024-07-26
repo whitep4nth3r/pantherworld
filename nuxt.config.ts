@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  css: ["~/assets/css/main.css"],
   experimental: {
     asyncContext: true,
   },
@@ -15,7 +16,6 @@ export default defineNuxtConfig({
       },
     },
   },
-
   app: {
     head: {
       htmlAttrs: {
@@ -23,7 +23,12 @@ export default defineNuxtConfig({
       },
     },
   },
-
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
   devtools: { enabled: true },
   modules: ["@nuxtjs/tailwindcss", "@nuxtjs/html-validator", "nuxt-auth-utils", "@formkit/auto-animate/nuxt"],
   compatibilityDate: "2024-07-04",

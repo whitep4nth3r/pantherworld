@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* WIP - we can define global base styles here */
+
+a:focus,
+a:active,
+a:focus-visible {
+  @apply outline-none;
+  @apply ring;
+  @apply ring-emerald-300;
+  @apply rounded-lg;
+}
