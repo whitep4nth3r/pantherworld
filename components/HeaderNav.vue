@@ -15,10 +15,11 @@ const open = useState("open", () => false);
     <div class="flex flex-row justify-between w-full relative">
       <button
         type="button"
+        aria-label="Toggle menu"
         v-bind:aria-expanded="open === true"
         @click="() => (open = !open)"
         class="text-base p-2 focus:outline-none focus:ring focus:ring-emerald-300 rounded-lg">
-        <img src="/icons/menu/burger.svg" alt="an actual burger" height="44" width="44" />
+        <img src="/icons/menu/burger.svg" alt="an actual hamburger" height="44" width="44" />
       </button>
 
       <nav
