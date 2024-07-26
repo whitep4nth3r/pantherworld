@@ -14,6 +14,14 @@ const props = defineProps<{
     <div class="flex flex-row gap-4 justify-center">
       <div class="flex flex-col items-center justify-between gap-2">
         <img
+          v-if="player.image_url === ''"
+          src="/icons/utils/player.svg"
+          width="128"
+          height="128"
+          alt="empty profile image"
+          class="rounded-full mb-2 border-4 border-yellow-500 w-32 bg-violet-700" />
+        <img
+          v-else
           :src="player.image_url"
           :alt="`${player.username} profile image`"
           class="rounded-full mb-2 border-4 border-yellow-500 w-32" />
