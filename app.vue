@@ -12,7 +12,7 @@ useHead({
     },
   ],
   bodyAttrs: {
-    class: "m-auto p-4 max-w-screen-md bg-zinc-900 text-zinc-50",
+    class: "m-auto p-4 max-w-screen-md bg-zinc-900 text-zinc-100",
   },
 });
 </script>
