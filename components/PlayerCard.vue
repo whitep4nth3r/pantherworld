@@ -19,12 +19,14 @@ const props = defineProps<{
           width="128"
           height="128"
           alt="empty profile image"
-          class="rounded-full mb-2 border-4 border-yellow-500 w-32 bg-violet-700" />
+          class="rounded-full mb-2 border-4 border-yellow-500 w-24 bg-violet-700" />
         <img
           v-else
+          width="128"
+          height="128"
           :src="player.image_url"
           :alt="`${player.username} profile image`"
-          class="rounded-full mb-2 border-4 border-yellow-500 w-32" />
+          class="rounded-full mb-2 border-4 border-yellow-500 w-24" />
         <p class="font-bold text-center">@{{ player.username }}</p>
         <p v-if="item" class="capitalize text-center">{{ item!.zone }} Zone</p>
         <p v-else class="capitalize text-center">{{ player.zone }} Zone</p>

@@ -50,7 +50,10 @@ const locationBgClass: locationKeyValue = {
       >Play now</a
     >
   </section>
-  <section v-auto-animate v-if="data !== null" class="mb-16 grid grid-cols-1 sm:grid-cols-2 gap-2">
+  <section
+    v-auto-animate
+    v-if="data !== null"
+    class="mb-16 grid grid-cols-1 sm:grid-cols-2 gap-2 justify-between items-start">
     <PlayerCard title="Latest claim" :player="data.meta.latestClaim.player" :item="data.meta.latestClaim.item" />
     <PlayerCard title="Newest player" :player="data.meta.newestPlayer" />
   </section>
