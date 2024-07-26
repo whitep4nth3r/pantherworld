@@ -1,17 +1,8 @@
 <script lang="ts" setup>
 const props = defineProps<{
   title: string;
-  player: {
-    username: string;
-    zone?: string;
-    image_url: string;
-    wealth_index?: number;
-  };
-  item?: {
-    name: string;
-    rarity: number;
-    zone: string;
-  };
+  player: Player;
+  item?: Item;
 }>();
 </script>
 
@@ -21,9 +12,7 @@ const props = defineProps<{
       {{ title }}
     </h2>
     <div class="flex flex-row gap-4 justify-center">
-      <div
-        class="flex items-center justify-between gap-2"
-        :class="[{ 'flex-row': item !== undefined }, { 'flex-col': item === undefined }]">
+      <div class="flex flex-col items-center justify-between gap-2">
         <img
           :src="player.image_url"
           :alt="`${player.username} profile image`"

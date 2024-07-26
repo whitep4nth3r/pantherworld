@@ -1,75 +1,49 @@
 declare global {
-  export type FullLeaderboardPlayer = {
+  export type Player = {
     username: string;
-    items: number;
-    wealth_index: number;
+    image_url?: string;
+    items?: number;
+    wealth_index?: number;
+    zone?: string;
   };
 
   export type FullLeaderboardResponse = {
     leaderboard: {
-      players: FullLeaderboardPlayer[];
+      players: Player[];
     };
-  };
-
-  type LeaderBoardPlayer = {
-    username: string;
-    image_url: string;
-    items: number;
-    wealth_index: number;
-  };
-
-  type SpawnedItem = {
-    name: string;
-    number?: number;
-    zone?: string;
-    createdAt?: Date;
-    rarity: number;
   };
 
   type Population = {
     [key: string]: number;
   };
 
-  type PlayerWithItem = {
-    player: {
-      username: string;
-      image_url: string;
-    };
-    item: {
-      name: string;
-      rarity: number;
-      zone: string;
-    };
-  };
-
-  export type NewestPlayer = {
-    username: string;
-    image_url: string;
-    zone: string;
+  type Item = {
+    createdAt?: Date;
+    name: string;
+    number?: number;
+    rarity: number;
+    zone?: string;
+    count?: number;
   };
 
   interface MetaResponse {
     meta: {
-      latestSpawned: SpawnedItem;
-      mostSpawned: SpawnedItem;
-      leastSpawned: SpawnedItem;
+      latestSpawned: Item;
+      mostSpawned: Item;
+      leastSpawned: Item;
       population: Population;
-      latestClaim: PlayerWithItem;
-      newestPlayer: NewestPlayer;
+      latestClaim: {
+        player: Player;
+        item: Item;
+      };
+      newestPlayer: Player;
     };
   }
-
-  type WorldItem = {
-    rarity: number;
-    name: string;
-    count?: number;
-    onlyZone: string | null;
-  };
 
   interface InventoryResponse {
     inventory: {
       total: number;
-      items: WorldItem[];
+      items: Item[];
       location: string;
       spawn_date: Date | null;
       players_in_zone: number;
