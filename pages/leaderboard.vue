@@ -14,6 +14,21 @@ const { status, data, error, refresh } = await useFetch<FullLeaderboardResponse 
   baseURL: config.public.world_api_url,
 });
 
+type RankedPlayer = Player & {
+  rank: number
+}
+
+const rankedPlayers = computed<RankedPlayer[]>(() => {
+  if(!data.value)
+  {
+    return [];
+  }
+
+  return data.value.leaderboard.players.map((player, index) => {
+    return {...player, rank: index};
+  })
+});
+
 onMounted(() => {
   document.addEventListener("visibilitychange", () => {
     if (!document.hidden) {
@@ -23,6 +38,60 @@ onMounted(() => {
 });
 
 const { user } = useUserSession();
+
+const sortSetting = ref({
+  column: "rank" as keyof RankedPlayer,
+  direction: "asc" as "asc"|"desc"
+});
+
+const sortedPlayers = computed(() => {
+  if(!data.value)
+  {
+    return []; 
+  }
+
+  if(!sortSetting.value)
+  {
+    return rankedPlayers.value;
+  } 
+
+  const columnValue = sortSetting.value.column;
+  return [...rankedPlayers.value].sort((playerA, playerB) => {
+    const valueA = playerA[columnValue];
+    const valueB = playerB[columnValue];
+
+    if(typeof valueA === "number" && typeof valueB === "number")
+    {
+      return sortSetting.value.direction === "asc" ? valueA - valueB : valueB - valueA;
+    }
+    else if(typeof valueA === "string" && typeof valueB === "string")
+    {
+      return sortSetting.value.direction === "asc" ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
+    }
+
+    return 0;
+  });  
+});
+
+function onSortClicked(column: keyof RankedPlayer)
+{
+  if(sortSetting.value.column !== column)
+  {
+    sortSetting.value.column = column; 
+  }
+  else
+  {
+    sortSetting.value.direction = sortSetting.value.direction === "asc" ? "desc" : "asc";
+  }
+}
+
+const columns: {key: keyof RankedPlayer, title: string}[] = [
+  {key: "rank", title: "Rank"},
+  {key: "username", title: "Username"},
+  {key: "items", title: "Items"},
+  {key: "wealth_index", title: "Wealth index"},
+]
+
 </script>
 
 <template>
@@ -32,22 +101,27 @@ const { user } = useUserSession();
     <table class="min-w-full divide-y divide-zinc-500">
       <thead class="bg-zinc-800">
         <tr>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-zinc-300 uppercase">Rank</th>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-zinc-300 uppercase">Username</th>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-zinc-300 uppercase">Items</th>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-zinc-300 uppercase">Wealth index</th>
+          <th v-for="column of columns" 
+            scope="col" 
+            class="px-6 py-3 text-left text-xs font-medium text-zinc-300 uppercase">
+            <button class="flex gap-1" @click="onSortClicked(column.key)">
+              {{ column.title }}
+              <img v-if="sortSetting.column === column.key && sortSetting.direction === 'asc'" src="/icons/utils/sort_asc.svg" alt="an ascending icon" height="16" width="16" />
+              <img v-if="sortSetting.column === column.key && sortSetting.direction === 'desc'" src="/icons/utils/sort_desc.svg" alt="an descending icon" height="16" width="16" />
+            </button>
+          </th>
         </tr>
       </thead>
       <tbody class="bg-black/90 divide-y divide-zinc-500">
         <tr
-          v-for="(player, index) in data!.leaderboard.players"
+          v-for="player in sortedPlayers"
           :key="player.username"
           :class="{ 'bg-violet-700 text-white': user?.name === player.username }">
           <td class="px-6 py-3 whitespace-nowrap">
-            <span v-if="index === 0">🥇</span>
-            <span v-else-if="index === 1">🥈</span>
-            <span v-else-if="index === 2">🥉</span>
-            <span v-else>{{ index + 1 }}</span>
+            <span v-if="player.rank === 0">🥇</span>
+            <span v-else-if="player.rank === 1">🥈</span>
+            <span v-else-if="player.rank === 2">🥉</span>
+            <span v-else>{{ player.rank + 1 }}</span>
           </td>
           <td class="px-6 py-3 whitespace-nowrap flex items-center text-zinc-100">
             {{ player.username }}
