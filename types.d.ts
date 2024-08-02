@@ -33,6 +33,7 @@ declare global {
     rarity: number;
     zone?: string;
     count?: number;
+    cooked?: boolean;
   };
 
   interface MetaResponse {

@@ -154,7 +154,8 @@ onMounted(() => {
           :key="item.name"
           :name="item.name"
           :count="item.count"
-          :rarity="item.rarity" />
+          :rarity="item.rarity"
+          :cooked="item.cooked !== null" />
       </div>
 
       <h2

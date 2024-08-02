@@ -4,6 +4,7 @@ const props = defineProps<{
   rarity: number;
   count?: number;
   extraInfo?: string;
+  cooked?: boolean;
 }>();
 
 const displayCount = computed(() => props.count && props.count > 1);
@@ -21,6 +22,11 @@ const irradiated = computed(() => props.name.includes("irradiated"));
       v-if="extraInfo"
       class="absolute text-white bg-zinc-600 rounded-xl py1 px-2 left-2 -top-2 italic font-bold capitalize"
       >{{ extraInfo }}</span
+    >
+    <span
+      v-if="cooked"
+      class="absolute text-white bg-zinc-600 rounded-xl py1 px-2 left-2 -top-2 italic font-bold capitalize"
+      >Cooked</span
     >
     <span class="m-auto p-4 rounded-full bg-zinc-600 s-14 text-2xl leading-none">
       <template v-if="InventoryItemImages[name.replace(' ', '-')] !== undefined">
