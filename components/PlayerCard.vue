@@ -11,8 +11,8 @@ const props = defineProps<{
     <h2 class="text-lg uppercase font-bold m-auto text-center mb-2 bg-yellow-500 text-zinc-900 rounded-lg w-full">
       {{ title }}
     </h2>
-    <div class="flex flex-row gap-4 justify-center">
-      <div class="flex flex-col items-center justify-between gap-2">
+    <div class="flex flex-row gap-6 justify-center">
+      <div class="flex flex-col items-center gap-2">
         <img
           v-if="player.image_url === ''"
           src="/icons/utils/player.svg"

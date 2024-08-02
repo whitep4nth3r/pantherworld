@@ -53,9 +53,9 @@ const locationBgClass: locationKeyValue = {
   <section
     v-auto-animate
     v-if="data !== null"
-    class="mb-16 grid grid-cols-1 sm:grid-cols-2 gap-2 justify-between items-start">
+    class="mb-16 grid grid-cols-1 sm:grid-cols-2 gap-8 justify-between items-start">
     <PlayerCard title="Latest claim" :player="data.meta.latestClaim.player" :item="data.meta.latestClaim.item" />
-    <PlayerCard title="Newest player" :player="data.meta.newestPlayer" />
+    <PlayerCard title="Latest cook" :player="data.meta.latestCook.player" :item="data.meta.latestCook.item" />
   </section>
   <section class="mb-16 grid grid-cols-1 sm:grid-cols-3 gap-3 my-4" v-auto-animate v-if="data !== null">
     <div class="flex flex-col justify-between">

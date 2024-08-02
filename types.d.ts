@@ -46,7 +46,10 @@ declare global {
         player: Player;
         item: Item;
       };
-      newestPlayer: Player;
+      latestCook: {
+        player: Player;
+        item: Item;
+      };
     };
   }
 
