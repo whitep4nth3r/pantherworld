@@ -64,6 +64,11 @@ useSeoMeta({
             <td class="border border-zinc-500 p-2">Gift an item in your current zone</td>
           </tr>
           <tr>
+            <td class="border border-zinc-500 p-2">🍳</td>
+            <td class="border border-zinc-500 p-2">!cook [item] + [item] ...</td>
+            <td class="border border-zinc-500 p-2">See what you can cook!</td>
+          </tr>
+          <tr>
             <td class="border border-zinc-500 p-2">🎒</td>
             <td class="border border-zinc-500 p-2">!inventory</td>
             <td class="border border-zinc-500 p-2">List your items</td>

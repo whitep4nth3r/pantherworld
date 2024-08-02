@@ -13,6 +13,15 @@ declare global {
     };
   };
 
+  export type RecipeMeta = {
+    title: string;
+    description: string;
+  };
+
+  export type RecipesResponse = {
+    recipes: RecipeMeta[];
+  };
+
   type Population = {
     [key: string]: number;
   };
