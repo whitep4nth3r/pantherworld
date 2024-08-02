@@ -15,18 +15,17 @@ const { status, data, error, refresh } = await useFetch<FullLeaderboardResponse 
 });
 
 type RankedPlayer = Player & {
-  rank: number
-}
+  rank: number;
+};
 
 const rankedPlayers = computed<RankedPlayer[]>(() => {
-  if(!data.value)
-  {
+  if (!data.value) {
     return [];
   }
 
   return data.value.leaderboard.players.map((player, index) => {
-    return {...player, rank: index};
-  })
+    return { ...player, rank: index };
+  });
 });
 
 onMounted(() => {
@@ -41,73 +40,89 @@ const { user } = useUserSession();
 
 const sortSetting = ref({
   column: "rank" as keyof RankedPlayer,
-  direction: "asc" as "asc"|"desc"
+  direction: "asc" as "asc" | "desc",
 });
 
 const sortedPlayers = computed(() => {
-  if(!data.value)
-  {
-    return []; 
+  if (!data.value) {
+    return [];
   }
 
-  if(!sortSetting.value)
-  {
+  if (!sortSetting.value) {
     return rankedPlayers.value;
-  } 
+  }
 
   const columnValue = sortSetting.value.column;
   return [...rankedPlayers.value].sort((playerA, playerB) => {
     const valueA = playerA[columnValue];
     const valueB = playerB[columnValue];
 
-    if(typeof valueA === "number" && typeof valueB === "number")
-    {
+    if (typeof valueA === "number" && typeof valueB === "number") {
       return sortSetting.value.direction === "asc" ? valueA - valueB : valueB - valueA;
-    }
-    else if(typeof valueA === "string" && typeof valueB === "string")
-    {
+    } else if (typeof valueA === "string" && typeof valueB === "string") {
       return sortSetting.value.direction === "asc" ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
     }
 
     return 0;
-  });  
+  });
 });
 
-function onSortClicked(column: keyof RankedPlayer)
-{
-  if(sortSetting.value.column !== column)
-  {
-    sortSetting.value.column = column; 
-  }
-  else
-  {
+function onSortClicked(column: keyof RankedPlayer) {
+  if (sortSetting.value.column !== column) {
+    sortSetting.value.column = column;
+  } else {
     sortSetting.value.direction = sortSetting.value.direction === "asc" ? "desc" : "asc";
   }
 }
 
-const columns: {key: keyof RankedPlayer, title: string}[] = [
-  {key: "rank", title: "Rank"},
-  {key: "username", title: "Username"},
-  {key: "items", title: "Items"},
-  {key: "wealth_index", title: "Wealth index"},
-]
-
+const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] = [
+  { key: "rank", title: "Rank", type: "num" },
+  { key: "username", title: "Username", type: "az" },
+  { key: "items", title: "Items", type: "num" },
+  { key: "wealth_index", title: "Wealth index", type: "num" },
+];
 </script>
 
 <template>
-  <h1 class="text-4xl font-bold mb-12">Leaderboard</h1>
+  <h1 class="text-4xl font-bold mb-4">Leaderboard</h1>
+  <p class="mb-12">Click the column headers to sort and re-order.</p>
 
   <section class="overflow-x-auto">
     <table class="min-w-full divide-y divide-zinc-500">
       <thead class="bg-zinc-800">
         <tr>
-          <th v-for="column of columns" 
-            scope="col" 
-            class="px-6 py-3 text-left text-xs font-medium text-zinc-300 uppercase">
-            <button class="flex gap-1" @click="onSortClicked(column.key)">
-              {{ column.title }}
-              <img v-if="sortSetting.column === column.key && sortSetting.direction === 'asc'" src="/icons/utils/sort_asc.svg" alt="an ascending icon" height="16" width="16" />
-              <img v-if="sortSetting.column === column.key && sortSetting.direction === 'desc'" src="/icons/utils/sort_desc.svg" alt="an descending icon" height="16" width="16" />
+          <th v-for="column of columns" scope="col" class="px-6 py-3 text-left">
+            <button
+              type="button"
+              class="text-xs font-medium text-zinc-300 uppercase flex gap-1 p-2 focus:outline-none active:outline-none focus:ring focus:ring-emerald-300 active:ring active:ring-emerald-300 rounded-lg"
+              @click="onSortClicked(column.key)">
+              <span>
+                {{ column.title }}
+              </span>
+              <img
+                v-if="sortSetting.column === column.key && sortSetting.direction === 'asc' && column.type === 'num'"
+                src="/icons/utils/sort_num_asc.svg"
+                alt="up arrow next to 0-9"
+                height="16"
+                width="16" />
+              <img
+                v-if="sortSetting.column === column.key && sortSetting.direction === 'desc' && column.type === 'num'"
+                src="/icons/utils/sort_num_desc.svg"
+                alt="down arrow next to 0-9"
+                height="16"
+                width="16" />
+              <img
+                v-if="sortSetting.column === column.key && sortSetting.direction === 'asc' && column.type === 'az'"
+                src="/icons/utils/sort_az_asc.svg"
+                alt="up arrow next to a-z"
+                height="16"
+                width="16" />
+              <img
+                v-if="sortSetting.column === column.key && sortSetting.direction === 'desc' && column.type === 'az'"
+                src="/icons/utils/sort_az_desc.svg"
+                alt="down arrow next to a-z"
+                height="16"
+                width="16" />
             </button>
           </th>
         </tr>
