@@ -54,6 +54,13 @@ const open = useState("open", () => false);
           >Inventory</NuxtLink
         >
         <NuxtLink
+          href="/recipes"
+          @click="() => (open = false)"
+          class="text-base p-2 focus:outline-none focus:ring focus:ring-emerald-300 rounded-lg"
+          :class="{ underline: title === 'recipes' }"
+          >Recipes</NuxtLink
+        >
+        <NuxtLink
           href="/leaderboard"
           @click="() => (open = false)"
           class="text-base p-2 focus:outline-none focus:ring focus:ring-emerald-300 rounded-lg"

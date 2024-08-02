@@ -30,6 +30,6 @@ const irradiated = computed(() => props.name.includes("irradiated"));
       <img v-else src="/icons/items/circle.svg" height="24" width="24" :alt="name" />
     </span>
     <span class="text-white text-lg capitalize">{{ name }}</span>
-    <span class="text-white">{{ rarity }}</span>
+    <span class="text-white">{{ Intl.NumberFormat().format(rarity) }}</span>
   </div>
 </template>
