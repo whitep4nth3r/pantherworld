@@ -88,13 +88,13 @@ const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] 
   <p class="mb-12">Click the column headers to sort and re-order.</p>
 
   <section class="overflow-x-auto">
-    <table class="min-w-full divide-y divide-zinc-500">
+    <table class="min-w-full divide-y divide-zinc-500 table-auto">
       <thead class="bg-zinc-800">
         <tr>
           <th v-for="column of columns" scope="col" class="px-6 py-3 text-left">
             <button
               type="button"
-              class="text-xs font-medium text-zinc-300 uppercase flex gap-1 p-2 focus:outline-none active:outline-none focus:ring focus:ring-emerald-300 active:ring active:ring-emerald-300 rounded-lg"
+              class="text-xs font-medium min-w-max text-zinc-300 uppercase flex items-center gap-1 p-2 focus:outline-none active:outline-none focus:ring focus:ring-emerald-300 active:ring active:ring-emerald-300 rounded-lg"
               @click="onSortClicked(column.key)">
               <span>
                 {{ column.title }}
@@ -121,6 +121,18 @@ const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] 
                 v-if="sortSetting.column === column.key && sortSetting.direction === 'desc' && column.type === 'az'"
                 src="/icons/utils/sort_az_desc.svg"
                 alt="down arrow next to a-z"
+                height="16"
+                width="16" />
+              <img
+                v-if="sortSetting.column !== column.key && column.type === 'az'"
+                src="/icons/utils/sort_az.svg"
+                alt="up and down arrow next to a-z"
+                height="16"
+                width="16" />
+              <img
+                v-if="sortSetting.column !== column.key && column.type === 'num'"
+                src="/icons/utils/sort_num.svg"
+                alt="up and down arrow next to num"
                 height="16"
                 width="16" />
             </button>
