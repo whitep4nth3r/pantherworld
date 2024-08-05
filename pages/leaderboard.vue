@@ -123,18 +123,7 @@ const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] 
                 alt="down arrow next to a-z"
                 height="16"
                 width="16" />
-              <img
-                v-if="sortSetting.column !== column.key && column.type === 'az'"
-                src="/icons/utils/sort_az.svg"
-                alt="up and down arrow next to a-z"
-                height="16"
-                width="16" />
-              <img
-                v-if="sortSetting.column !== column.key && column.type === 'num'"
-                src="/icons/utils/sort_num.svg"
-                alt="up and down arrow next to num"
-                height="16"
-                width="16" />
+              <USkeleton v-if="sortSetting.column !== column.key" class="h-4 w-4" />
             </button>
           </th>
         </tr>
