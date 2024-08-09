@@ -2,6 +2,8 @@
 
 # Welcome to p4nth3r.world
 
+[Read the community wiki](https://p4nth3rworld-wiki.netlify.app/)
+
 ## The game doesn't stop when the stream ends
 
 p4nth3rworld is a multiplayer text-based game powered by a live coding stream at
