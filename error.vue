@@ -28,7 +28,7 @@ useHead({
       <a
         href="/"
         class="bg-violet-700 hover:bg-violet-500 focus:bg-emerald-700 active:bg-emerald-700 focus:outline-none focus:ring focus:ring-emerald-300 text-white font-bold uppercase py-2 px-4 rounded-lg text-xl transition"
-        >Take me back</a
+        >Take me home</a
       >
     </section>
   </div>
