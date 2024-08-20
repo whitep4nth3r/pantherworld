@@ -20,11 +20,12 @@ const { loggedIn, user, session, clear } = useUserSession();
 
 const nuxtApp = useNuxtApp();
 
-const { status, data, error, refresh } = await useFetch<InventoryResponse>(`inventory/`, {
+const { status, data, error, refresh } = useFetch<InventoryResponse>(`inventory/`, {
   baseURL: config.public.world_api_url,
   headers: {
     token: user.value!.accessToken,
   },
+  lazy: true,
   onResponse(context) {
     if (context.response.status === 401) {
       clear();
@@ -97,7 +98,7 @@ onMounted(() => {
 <template>
   <h1 class="text-4xl font-bold mb-12">Inventory</h1>
 
-  <div v-if="data?.inventory">
+  <div v-if="data">
     <section
       class="flex flex-col rounded-lg p-6 justify-center items-center align gap-2 bg-gradient-to-b to-zinc-950 relative"
       :class="locationBg">
@@ -119,7 +120,7 @@ onMounted(() => {
         width="124"
         :alt="`${user?.name} profile picture`"
         class="rounded-full drop-shadow-xl" />
-      <h1 class="text-3xl font-bold">@{{ user?.name }}</h1>
+      <h2 class="text-3xl font-bold">@{{ user?.name }}</h2>
     </section>
 
     <section class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4" v-auto-animate>
@@ -164,5 +165,36 @@ onMounted(() => {
         No items!
       </h2>
     </section>
+  </div>
+
+  <div v-else>
+    <div class="flex flex-col rounded-lg p-6 justify-center items-center align gap-2">
+      <USkeleton
+        class="w-[124px] h-[124px]"
+        :ui="{ rounded: 'rounded-full', background: 'bg-zinc-700 dark:bg-zinc-700' }" />
+      <USkeleton class="h-8 w-[250px]" :ui="{ rounded: 'rounded-lg', background: 'bg-zinc-700 dark:bg-zinc-700' }" />
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4">
+      <USkeleton
+        class="flex flex-row gap-4 bg-zinc-800 rounded-lg p-4 items-center h-16"
+        :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
+      <USkeleton
+        class="flex flex-row gap-4 bg-zinc-800 rounded-lg p-4 items-center h-16"
+        :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
+      <USkeleton
+        class="flex flex-row gap-4 bg-zinc-800 rounded-lg p-4 items-center h-16"
+        :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
+      <USkeleton
+        class="flex flex-row gap-4 bg-zinc-800 rounded-lg p-4 items-center h-16"
+        :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+      <USkeleton class="rounded-lg h-32" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
+      <USkeleton class="rounded-lg h-32" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
+      <USkeleton class="rounded-lg h-32" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
+      <USkeleton class="rounded-lg h-32" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
+      <USkeleton class="rounded-lg h-32" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
+      <USkeleton class="rounded-lg h-32" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
+    </div>
   </div>
 </template>
