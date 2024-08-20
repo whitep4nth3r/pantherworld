@@ -149,7 +149,10 @@ onMounted(() => {
     </section>
 
     <section class="my-4">
-      <div v-if="data.inventory.items.length > 0" class="grid grid-cols-2 sm:grid-cols-3 gap-3" v-auto-animate>
+      <div
+        v-if="data.inventory.items.length > 0"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3"
+        v-auto-animate>
         <InventoryItem
           v-for="item in data.inventory.items"
           :key="item.name"
@@ -188,7 +191,7 @@ onMounted(() => {
         class="flex flex-row gap-4 bg-zinc-800 rounded-lg p-4 items-center h-16"
         :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
     </div>
-    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
       <USkeleton class="rounded-lg h-32" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
       <USkeleton class="rounded-lg h-32" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
       <USkeleton class="rounded-lg h-32" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
