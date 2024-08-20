@@ -146,7 +146,7 @@ const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] 
             {{ player.items }}
           </td>
           <td class="px-6 py-3 whitespace-nowrap text-zinc-100">
-            {{ player.wealth_index }}
+            {{ Intl.NumberFormat().format(player.wealth_index as number) }}
           </td>
         </tr>
       </tbody>
