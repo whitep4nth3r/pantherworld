@@ -59,12 +59,12 @@ const locationBgClass: locationKeyValue = {
     </div>
     <div class="mb-16 grid grid-cols-1 sm:grid-cols-2 gap-8 justify-between items-start" v-else>
       <div>
-        <USkeleton class="mb-2 w-full h-8" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
-        <USkeleton class="w-full h-24" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
+        <USkeleton class="mb-2 w-full h-8" />
+        <USkeleton class="w-full h-24" />
       </div>
       <div>
-        <USkeleton class="mb-2 w-full h-8" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
-        <USkeleton class="w-full h-24" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
+        <USkeleton class="mb-2 w-full h-8" />
+        <USkeleton class="w-full h-24" />
       </div>
     </div>
   </section>
@@ -94,16 +94,16 @@ const locationBgClass: locationKeyValue = {
     </div>
     <div class="mb-16 grid grid-cols-1 sm:grid-cols-3 gap-3 my-4" v-else>
       <div>
-        <USkeleton class="mb-2 w-full h-8" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
-        <USkeleton class="w-full h-24" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
+        <USkeleton class="mb-2 w-full h-8" />
+        <USkeleton class="w-full h-24" />
       </div>
       <div>
-        <USkeleton class="mb-2 w-full h-8" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
-        <USkeleton class="w-full h-24" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
+        <USkeleton class="mb-2 w-full h-8" />
+        <USkeleton class="w-full h-24" />
       </div>
       <div>
-        <USkeleton class="mb-2 w-full h-8" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
-        <USkeleton class="w-full h-24" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
+        <USkeleton class="mb-2 w-full h-8" />
+        <USkeleton class="w-full h-24" />
       </div>
     </div>
   </section>
@@ -126,14 +126,14 @@ const locationBgClass: locationKeyValue = {
       </ul>
     </div>
     <div v-else>
-      <USkeleton class="mb-2 w-full h-8" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
+      <USkeleton class="mb-2 w-full h-8" />
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4">
-        <USkeleton class="w-full h-16" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
-        <USkeleton class="w-full h-16" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
-        <USkeleton class="w-full h-16" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
-        <USkeleton class="w-full h-16" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
-        <USkeleton class="w-full h-16" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
-        <USkeleton class="w-full h-16" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
+        <USkeleton class="w-full h-16" />
+        <USkeleton class="w-full h-16" />
+        <USkeleton class="w-full h-16" />
+        <USkeleton class="w-full h-16" />
+        <USkeleton class="w-full h-16" />
+        <USkeleton class="w-full h-16" />
       </div>
     </div>
   </section>

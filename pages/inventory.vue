@@ -171,30 +171,26 @@ onMounted(() => {
     <div class="flex flex-col rounded-lg p-6 justify-center items-center align gap-2">
       <USkeleton
         class="w-[124px] h-[124px]"
-        :ui="{ rounded: 'rounded-full', background: 'bg-zinc-700 dark:bg-zinc-700' }" />
-      <USkeleton class="h-8 w-[250px]" :ui="{ rounded: 'rounded-lg', background: 'bg-zinc-700 dark:bg-zinc-700' }" />
+        :ui="{ rounded: 'rounded-full' }" />
+      <USkeleton class="h-8 w-[250px]" :ui="{ rounded: 'rounded-lg'}" />
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4">
+      <USkeleton 
+        class="flex flex-row gap-4 rounded-lg p-4 items-center h-16" />
+      <USkeleton 
+        class="flex flex-row gap-4 rounded-lg p-4 items-center h-16" />
       <USkeleton
-        class="flex flex-row gap-4 bg-zinc-800 rounded-lg p-4 items-center h-16"
-        :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
-      <USkeleton
-        class="flex flex-row gap-4 bg-zinc-800 rounded-lg p-4 items-center h-16"
-        :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
-      <USkeleton
-        class="flex flex-row gap-4 bg-zinc-800 rounded-lg p-4 items-center h-16"
-        :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
-      <USkeleton
-        class="flex flex-row gap-4 bg-zinc-800 rounded-lg p-4 items-center h-16"
-        :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
+        class="flex flex-row gap-4 rounded-lg p-4 items-center h-16" />
+      <USkeleton 
+        class="flex flex-row gap-4 rounded-lg p-4 items-center h-16" />
     </div>
     <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-      <USkeleton class="rounded-lg h-32" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
-      <USkeleton class="rounded-lg h-32" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
-      <USkeleton class="rounded-lg h-32" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
-      <USkeleton class="rounded-lg h-32" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
-      <USkeleton class="rounded-lg h-32" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
-      <USkeleton class="rounded-lg h-32" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
+      <USkeleton class="rounded-lg h-32"/>
+      <USkeleton class="rounded-lg h-32"/>
+      <USkeleton class="rounded-lg h-32"/>
+      <USkeleton class="rounded-lg h-32"/>
+      <USkeleton class="rounded-lg h-32"/>
+      <USkeleton class="rounded-lg h-32"/>
     </div>
   </div>
 </template>

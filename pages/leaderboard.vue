@@ -155,12 +155,12 @@ const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] 
   </section>
 
   <section v-else class="flex flex-col gap-2">
-    <USkeleton class="w-full h-8" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
-    <USkeleton class="w-full h-8" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
-    <USkeleton class="w-full h-8" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
-    <USkeleton class="w-full h-8" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
-    <USkeleton class="w-full h-8" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
-    <USkeleton class="w-full h-8" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
-    <USkeleton class="w-full h-8" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
+    <USkeleton class="w-full h-8" />
+    <USkeleton class="w-full h-8" />
+    <USkeleton class="w-full h-8" />
+    <USkeleton class="w-full h-8" />
+    <USkeleton class="w-full h-8" />
+    <USkeleton class="w-full h-8" />
+    <USkeleton class="w-full h-8" />
   </section>
 </template>
