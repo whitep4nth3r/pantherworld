@@ -10,8 +10,9 @@ useSeoMeta({
   description: "Where do you rank?",
 });
 
-const { status, data, error, refresh } = await useFetch<FullLeaderboardResponse | null>(`leaderboard/`, {
+const { status, data, error, refresh } = useFetch<FullLeaderboardResponse | null>(`leaderboard/`, {
   baseURL: config.public.world_api_url,
+  lazy: true,
 });
 
 type RankedPlayer = Player & {
@@ -87,7 +88,7 @@ const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] 
   <h1 class="text-4xl font-bold mb-4">Leaderboard</h1>
   <p class="mb-12">Click the column headers to sort and re-order.</p>
 
-  <section class="overflow-x-auto">
+  <section class="overflow-x-auto" v-if="data">
     <table class="min-w-full divide-y divide-zinc-500 table-auto">
       <thead class="bg-zinc-800">
         <tr>
@@ -151,5 +152,15 @@ const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] 
         </tr>
       </tbody>
     </table>
+  </section>
+
+  <section v-else class="flex flex-col gap-2">
+    <USkeleton class="w-full h-8" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
+    <USkeleton class="w-full h-8" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
+    <USkeleton class="w-full h-8" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
+    <USkeleton class="w-full h-8" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
+    <USkeleton class="w-full h-8" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
+    <USkeleton class="w-full h-8" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
+    <USkeleton class="w-full h-8" :ui="{ background: 'bg-zinc-700 dark:bg-zinc-700' }" />
   </section>
 </template>
