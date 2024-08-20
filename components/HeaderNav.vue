@@ -68,6 +68,13 @@ const open = useState("open", () => false);
           >Leaderboard</NuxtLink
         >
         <a
+          href="https://p4nth3rworld-wiki.netlify.app/"
+          @click="() => (open = false)"
+          class="text-base p-2 focus:outline-none focus:ring focus:ring-emerald-300 rounded-lg"
+          target="_blank"
+          >Community Wiki</a
+        >
+        <a
           href="https://github.com/whitep4nth3r/pantherworld/issues"
           @click="() => (open = false)"
           class="text-base p-2 focus:outline-none focus:ring focus:ring-emerald-300 rounded-lg"
