@@ -107,4 +107,5 @@ const open = useState("open", () => false);
       >
     </div>
   </header>
+  <EventFeed />
 </template>
