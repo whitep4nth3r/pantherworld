@@ -1,0 +1,7 @@
+# *
+User-agent: *
+Disallow: /inventory
+Disallow: /404
+
+# Host
+Host: https://p4nth3r.world
