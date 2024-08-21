@@ -12,3 +12,8 @@ a:focus-visible {
   @apply ring-emerald-300;
   @apply rounded-lg;
 }
+
+[role="region"] {
+  height: 100%;
+  justify-content: flex-start !important;
+}
