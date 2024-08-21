@@ -4,6 +4,23 @@
 
 /* WIP - we can define global base styles here */
 
+html {
+  @apply font-mono;
+}
+
+h1,
+h2 {
+  @apply font-display;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  @apply font-mono;
+  @apply font-bold;
+}
+
 a:focus,
 a:active,
 a:focus-visible {

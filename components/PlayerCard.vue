@@ -8,9 +8,9 @@ const props = defineProps<{
 
 <template>
   <div class="flex flex-col gap-2">
-    <h2 class="text-lg uppercase font-bold m-auto text-center mb-2 bg-yellow-500 text-zinc-900 rounded-lg w-full">
+    <p class="text-lg uppercase font-bold m-auto text-center mb-2 bg-yellow-500 text-zinc-900 rounded-lg w-full">
       {{ title }}
-    </h2>
+    </p>
     <div class="flex flex-row gap-6 justify-center">
       <div class="flex flex-col items-center gap-2">
         <img
