@@ -14,8 +14,6 @@ const validEvents = [
   "releaseunclaimed",
 ];
 
-const { status, data, send, open, close } = useWebSocket("wss://p4nth3rb0t-mainframe.herokuapp.com/");
-
 type Event = {
   data: {
     username?: string;
@@ -138,6 +136,11 @@ function getNotifProgressBg(type: string): string {
   }
 }
 
+const { status, data, send, open, close } = useWebSocket("wss://p4nth3rb0t-mainframe.herokuapp.com/", {
+  autoReconnect: true,
+  heartbeat: true,
+});
+
 watch(data, (message) => {
   const messageObj = JSON.parse(message);
 
@@ -166,8 +169,6 @@ watch(data, (message) => {
     });
   }
 });
-
-// check for ws connection and reconnect if disconnects
 </script>
 
 <template>
