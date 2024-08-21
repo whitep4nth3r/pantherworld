@@ -15,5 +15,11 @@ a:focus-visible {
 
 [role="region"] {
   height: 100%;
-  justify-content: flex-start !important;
+  visibility: hidden !important;
+}
+
+@media screen and (min-width: 768px) {
+  [role="region"] {
+    visibility: visible !important;
+  }
 }

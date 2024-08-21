@@ -167,12 +167,9 @@ watch(data, (message) => {
   }
 });
 
-// limit to 3 events?
-// format events depending on "message.type?"
 // check for ws connection and reconnect if disconnects
-// decide on presentation
 </script>
 
 <template>
-  <UNotifications />
+  <UNotifications :ui="{ wrapper: 'fixed flex flex-col justify-start z-[55]' }" />
 </template>
