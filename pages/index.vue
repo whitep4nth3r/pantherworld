@@ -47,8 +47,8 @@ const locationBgClass: locationKeyValue = {
     </h1>
     <a
       href="https://twitch.tv/whitep4nth3r/chat"
-      class="bg-violet-700 hover:bg-violet-500 focus:bg-emerald-700 active:bg-emerald-700 focus:outline-none focus:ring focus:ring-emerald-300 text-white font-bold uppercase py-2 px-4 rounded-lg text-xl transition"
-      >Play now</a
+      class="bg-violet-700 hover:bg-violet-500 focus:bg-emerald-700 active:bg-emerald-700 focus:outline-none focus:ring focus:ring-emerald-300 text-white py-2 px-4 rounded-lg text-xl transition font-display"
+      >play now</a
     >
   </section>
 
@@ -110,7 +110,7 @@ const locationBgClass: locationKeyValue = {
 
   <section class="mb-16" v-auto-animate>
     <div v-if="data !== null">
-      <h2 class="font-bold uppercase text-xl bg-yellow-500 text-zinc-900 text-center rounded-lg">Current Population</h2>
+      <p class="font-bold uppercase text-xl bg-yellow-500 text-zinc-900 text-center rounded-lg">Current Population</p>
       <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4" v-auto-animate>
         <InventoryInfoItem
           v-for="(count, zone) in data.meta.population"

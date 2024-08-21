@@ -3,6 +3,10 @@
 module.exports = {
   content: ["./components/**/*.{js,vue,ts}", "./pages/**/*.vue", "./app.vue", "./error.vue"],
   theme: {
+    fontFamily: {
+      display: ["Lacquer", "serif"],
+      mono: ['"Ubuntu Mono"', "monospace"],
+    },
     extend: {
       colors: {
         "notif-black": "#0f111a",
