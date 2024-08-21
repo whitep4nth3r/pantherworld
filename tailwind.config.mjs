@@ -25,8 +25,3 @@ module.exports = {
   },
   plugins: [],
 };
-
-// oxanium
-// jersey 10
-
-// ubunto mono
