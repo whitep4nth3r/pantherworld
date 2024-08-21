@@ -157,7 +157,7 @@ watch(data, (message) => {
         title: uiColours.text,
         description: uiColours.text,
         padding: "p-2",
-        // ring: "ring-2 ring-white dark:ring-white",
+        ring: "",
         shadow: "shadow-xl",
         progress: {
           background: getNotifProgressBg(messageObj.type),
