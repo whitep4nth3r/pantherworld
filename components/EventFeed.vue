@@ -131,7 +131,6 @@ function getNotifProgressBg(type: string): string {
 
 const { status, data, send, open, close } = useWebSocket("wss://p4nth3rb0t-mainframe.herokuapp.com/", {
   autoReconnect: true,
-  heartbeat: true,
 });
 
 watch(data, (message) => {
