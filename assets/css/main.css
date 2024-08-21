@@ -12,3 +12,15 @@ a:focus-visible {
   @apply ring-emerald-300;
   @apply rounded-lg;
 }
+
+/* for event feed, beware if another role=region ends up being added to the app */
+[role="region"] {
+  height: 100%;
+  visibility: hidden !important;
+}
+
+@media screen and (min-width: 768px) {
+  [role="region"] {
+    visibility: visible !important;
+  }
+}
