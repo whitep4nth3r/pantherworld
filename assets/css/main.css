@@ -4,6 +4,24 @@
 
 /* WIP - we can define global base styles here */
 
+@layer base {
+  @font-face {
+    font-family: "Ubuntu Mono";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(/fonts/UbuntuMono-Regular.woff2) format("woff2");
+  }
+
+  @font-face {
+    font-family: "Lacquer";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(/fonts/Lacquer-Regular.woff2) format("woff2");
+  }
+}
+
 html {
   @apply font-mono;
 }

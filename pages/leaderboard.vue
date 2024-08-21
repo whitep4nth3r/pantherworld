@@ -85,7 +85,7 @@ const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] 
 </script>
 
 <template>
-  <h1 class="text-4xl font-bold mb-4">Leaderboard</h1>
+  <h1 class="text-4xl font-bold mb-4">leaderboard</h1>
   <p class="mb-12">Click the column headers to sort and re-order.</p>
 
   <section class="overflow-x-auto" v-if="data">

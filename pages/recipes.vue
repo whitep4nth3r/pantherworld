@@ -10,17 +10,15 @@ useSeoMeta({
 const { status, data, error, refresh } = await useFetch<RecipesResponse | null>(`recipes/`, {
   baseURL: config.public.world_api_url,
 });
-
-console.log(data.value);
 </script>
 
 <template>
-  <h1 class="text-4xl font-bold mb-4">Recipes</h1>
+  <h1 class="text-4xl font-bold mb-4">recipes</h1>
   <p class="mb-12">See what you can cook!</p>
 
   <ul v-if="data !== null">
     <li v-for="recipe in data.recipes" class="mb-8">
-      <h2 class="font-bold text-2xl text-emerald-300">{{ recipe.title }}</h2>
+      <h2 class="font-bold text-2xl text-emerald-300 lowercase">{{ recipe.title }}</h2>
       <p class="italic">{{ recipe.description }}</p>
     </li>
   </ul>

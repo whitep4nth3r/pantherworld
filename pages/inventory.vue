@@ -96,7 +96,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <h1 class="text-4xl font-bold mb-12">Inventory</h1>
+  <h1 class="text-4xl font-bold mb-12">inventory</h1>
 
   <div v-if="data">
     <section

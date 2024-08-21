@@ -30,13 +30,6 @@ export default defineNuxtConfig({
     },
   },
   devtools: { enabled: true },
-  modules: [
-    "@nuxtjs/html-validator",
-    "nuxt-auth-utils",
-    "@formkit/auto-animate/nuxt",
-    "@nuxt/ui",
-    "@vueuse/nuxt",
-    ["@nuxtjs/google-fonts", { families: { Lacquer: true, "Ubuntu Mono": { wght: [400, 700] } } }],
-  ],
+  modules: ["@nuxtjs/html-validator", "nuxt-auth-utils", "@formkit/auto-animate/nuxt", "@nuxt/ui", "@vueuse/nuxt"],
   compatibilityDate: "2024-07-04",
 });
