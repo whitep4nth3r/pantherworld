@@ -41,10 +41,7 @@ const locationBgClass: locationKeyValue = {
       <span>🌳</span>
       <span>🗺️</span>
     </div>
-    <h1 class="text-4xl mb-6 text-center font-bold">
-      The game doesn't stop<br />
-      when the stream ends.
-    </h1>
+    <h1 class="text-4xl mb-6 text-center font-bold">The game doesn't stop when the stream ends.</h1>
     <a
       href="https://twitch.tv/whitep4nth3r/chat"
       class="bg-violet-700 hover:bg-violet-500 focus:bg-emerald-700 active:bg-emerald-700 focus:outline-none focus:ring focus:ring-emerald-300 text-white py-2 px-4 rounded-lg text-xl transition font-display"
