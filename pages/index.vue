@@ -41,7 +41,7 @@ const locationBgClass: locationKeyValue = {
       <span>🌳</span>
       <span>🗺️</span>
     </div>
-    <h1 class="text-4xl mb-6 text-center font-bold">The game doesn't stop when the stream ends.</h1>
+    <h1 class="text-4xl mb-6 text-center font-bold max-w-md">The game doesn't stop when the stream ends</h1>
     <a
       href="https://twitch.tv/whitep4nth3r/chat"
       class="bg-violet-700 hover:bg-violet-500 focus:bg-emerald-700 active:bg-emerald-700 focus:outline-none focus:ring focus:ring-emerald-300 text-white py-2 px-4 rounded-lg text-xl transition font-display"
@@ -108,7 +108,7 @@ const locationBgClass: locationKeyValue = {
   <section class="mb-16" v-auto-animate>
     <div v-if="data !== null">
       <p class="font-bold uppercase text-xl bg-yellow-500 text-zinc-900 text-center rounded-lg">Current Population</p>
-      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4" v-auto-animate>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4" v-auto-animate>
         <InventoryInfoItem
           v-for="(count, zone) in data.meta.population"
           class="bg-gradient-to-bl via-zinc-950 via-50% to-zinc-950 to-100%"
@@ -120,7 +120,7 @@ const locationBgClass: locationKeyValue = {
           :iconAlt="zone.toString()"
           :topText="zone"
           :bottomText="`Zone ${count}`" />
-      </ul>
+      </div>
     </div>
     <div v-else>
       <USkeleton class="mb-2 w-full h-8" />
