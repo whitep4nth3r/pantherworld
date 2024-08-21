@@ -114,21 +114,14 @@ function getNotifColors(type: string): { background: string; text: string } {
 function getNotifProgressBg(type: string): string {
   switch (type) {
     case "scanned":
-      return "bg-notif-black dark:bg-notif-black";
-    case "cookfail":
-      return "bg-notif-white dark:bg-notif-white";
     case "cook":
-      return "bg-notif-black dark:bg-notif-black";
-    case "release":
-      return "bg-notif-white dark:bg-notif-white";
-    case "move":
-      return "bg-notif-white dark:bg-notif-white";
     case "claim":
       return "bg-notif-black dark:bg-notif-black";
+    case "cookfail":
+    case "release":
+    case "move":
     case "drop":
-      return "bg-notif-white dark:bg-notif-white";
     case "gift":
-      return "bg-notif-white dark:bg-notif-white";
     case "spawn":
       return "bg-notif-white dark:bg-notif-white";
     default:
