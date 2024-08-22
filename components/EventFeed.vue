@@ -164,5 +164,5 @@ watch(data, (message) => {
 </script>
 
 <template>
-  <UNotifications :ui="{ wrapper: 'fixed flex flex-col justify-start z-[55]' }" />
+  <UNotifications :ui="{ wrapper: 'fixed flex flex-col justify-start z-[55] pointer-events-none' }" />
 </template>

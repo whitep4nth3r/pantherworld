@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { onClickOutside } from "@vueuse/core";
+
 const props = defineProps<{
   title: string;
 }>();
@@ -12,10 +14,12 @@ function logout() {
 }
 
 const open = useState("open", () => false);
+const target = ref(null);
+onClickOutside(target, (event) => (open.value = false));
 </script>
 
 <template>
-  <header class="flex flex-col w-full items-center mb-6">
+  <header class="flex flex-col w-full items-center mb-6" ref="target">
     <div class="flex flex-row justify-between w-full relative">
       <button
         type="button"
@@ -95,17 +99,17 @@ const open = useState("open", () => false);
         <button
           type="button"
           @click="logout"
-          class="text-white font-medium focus:outline-none focus:ring focus:ring-emerald-300 text-base p-2 rounded-lg transition">
-          Log out
+          class="font-display text-white font-medium focus:outline-none focus:ring focus:ring-emerald-300 text-lg p-2 rounded-lg transition">
+          log out
         </button>
       </div>
       <NuxtLink
         href="/api/auth/twitch"
         external
         v-if="!loggedIn"
-        class="text-white font-medium bg-violet-700 hover:bg-violet-500 focus:bg-violet-500 active:bg-violet-500 focus:outline-none focus:ring focus:ring-violet-700 text-2l p-2 rounded-lg transition self-center flex flex-row gap-1 justify-between items-center"
+        class="font-display text-white font-medium bg-violet-700 hover:bg-violet-500 focus:bg-violet-500 active:bg-violet-500 focus:outline-none focus:ring focus:ring-violet-700 text-lg p-2 rounded-lg transition self-center flex flex-row gap-1 justify-between items-center"
         ><span><img src="/icons/menu/twitch.svg" role="presentation" height="22" width="22" /></span>
-        <span>Log in<span class="sr-only">with Twitch</span></span></NuxtLink
+        <span>log in<span class="sr-only">with Twitch</span></span></NuxtLink
       >
     </div>
   </header>
