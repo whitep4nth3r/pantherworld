@@ -1,4 +1,7 @@
 <script setup lang="ts">
+// @ts-ignore
+import { getData, setData } from "nuxt-storage/local-storage";
+import { onMounted } from "vue";
 import { onClickOutside } from "@vueuse/core";
 
 const props = defineProps<{
@@ -14,11 +17,39 @@ function logout() {
 }
 
 const open = useState("open", () => false);
+const showNotifications = useState("showNotifications", () => getData("show_notifications") === true);
+
+function toggleNotifications() {
+  const currentValue = getData("show_notifications");
+
+  if (currentValue === "true") {
+    setData("show_notifications", "false");
+    showNotifications.value = false;
+  } else {
+    setData("show_notifications", "true");
+    showNotifications.value = true;
+  }
+}
+
 const target = ref(null);
 onClickOutside(target, (event) => (open.value = false));
+
+onMounted(() => {
+  const currentValue = getData("show_notifications");
+  showNotifications.value = currentValue === "true";
+});
 </script>
 
 <template>
+  <button
+    type="button"
+    class="text-white notificationToggleButton flex gap-2 justify-between rounded-lg px-4 py-2 bottom-2 left-2 fixed focus:outline-none focus:ring focus:ring-emerald-300 active:ring active:ring-emerald-300 z-10 bg-zinc-700 shadow"
+    @click="() => toggleNotifications()"
+    v-bind:aria-label="showNotifications ? 'Turn off event feed in sidebar' : 'Turn on event feed in sidebar'">
+    <img src="/icons/utils/eye_open.svg" height="24" width="24" alt="eye" v-if="showNotifications" />
+    <img src="/icons/utils/eye_slash.svg" height="24" width="24" alt="eye with a slash" v-if="!showNotifications" />
+    <span>Event feed</span>
+  </button>
   <header class="flex flex-col w-full items-center mb-6" ref="target">
     <div class="flex flex-row justify-between w-full relative">
       <button
@@ -113,5 +144,5 @@ onClickOutside(target, (event) => (open.value = false));
       >
     </div>
   </header>
-  <EventFeed />
+  <EventFeed v-if="showNotifications" />
 </template>
