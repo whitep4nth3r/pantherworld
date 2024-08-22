@@ -1,8 +1,5 @@
 <script setup lang="ts">
-// @ts-ignore
-import { getData, setData } from "nuxt-storage/local-storage";
-import { onMounted } from "vue";
-import { onClickOutside } from "@vueuse/core";
+import { onClickOutside, useStorage } from "@vueuse/core";
 
 const props = defineProps<{
   title: string;
@@ -17,28 +14,14 @@ function logout() {
 }
 
 const open = useState("open", () => false);
-const showNotifications = useState("showNotifications", () => true);
+const showNotifications = useStorage("show_notifications", true);
 
 function toggleNotifications() {
-  const localStorageValue = getData("show_notifications");
-  const currentValue = localStorageValue === null ? "true" : localStorageValue;
-
-  if (currentValue === "true") {
-    setData("show_notifications", "false");
-    showNotifications.value = false;
-  } else {
-    setData("show_notifications", "true");
-    showNotifications.value = true;
-  }
+  showNotifications.value = !showNotifications.value;
 }
 
 const target = ref(null);
 onClickOutside(target, (event) => (open.value = false));
-
-onMounted(() => {
-  const currentValue = getData("show_notifications");
-  showNotifications.value = currentValue === null ? true : currentValue === "true";
-});
 </script>
 
 <template>
