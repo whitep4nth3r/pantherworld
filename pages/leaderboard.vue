@@ -110,7 +110,7 @@ const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] 
       class="w-full p-1 pb-4"
       @submit="scrollToUser"
       >
-      <UFormGroup size="lg" :label="!state.username ? 'Search for a player' : 'Search for a player (Found: ' + filteredWithUsername().length + ')' " class="w-full flex flex-col gap-2" description="Submit a search query to scroll to the results.">
+      <UFormGroup size="lg" label="Search for a player" class="w-full flex flex-col gap-2" description="Submit to scroll to the result." :hint="!state.username ? '' : 'Found: ' + filteredWithUsername().length ">
         <div class="flex gap-2">
           <UInput
             class="w-full"
