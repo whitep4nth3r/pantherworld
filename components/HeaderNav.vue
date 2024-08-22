@@ -17,10 +17,11 @@ function logout() {
 }
 
 const open = useState("open", () => false);
-const showNotifications = useState("showNotifications", () => getData("show_notifications") === true);
+const showNotifications = useState("showNotifications", () => true);
 
 function toggleNotifications() {
-  const currentValue = getData("show_notifications");
+  const localStorageValue = getData("show_notifications");
+  const currentValue = localStorageValue === null ? "true" : localStorageValue;
 
   if (currentValue === "true") {
     setData("show_notifications", "false");
@@ -36,7 +37,7 @@ onClickOutside(target, (event) => (open.value = false));
 
 onMounted(() => {
   const currentValue = getData("show_notifications");
-  showNotifications.value = currentValue === "true";
+  showNotifications.value = currentValue === null ? true : currentValue === "true";
 });
 </script>
 
