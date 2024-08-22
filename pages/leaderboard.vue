@@ -85,6 +85,8 @@ function filteredWithUsername(){
 }
 
 function scrollToUser() {
+  if(!state.username) return; 
+
   const player = filteredWithUsername()[0]
   if(player) {
     const targetElement = document.getElementById(player.username);
@@ -101,8 +103,7 @@ const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] 
 </script>
 
 <template>
-  <h1 class="text-4xl font-bold mb-4">leaderboard</h1>
-  <p class="mb-12">Click the column headers to sort and re-order.</p>
+  <h1 class="text-4xl font-bold mb-12">leaderboard</h1>
 
   <section class="overflow-x-auto" v-if="data">
     <UForm
@@ -110,7 +111,7 @@ const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] 
       class="w-full p-1 pb-4"
       @submit="scrollToUser"
       >
-      <UFormGroup size="lg" :label="!state.username ? 'Search for a player' : 'Search for a player (Found: ' + filteredWithUsername().length + ')' " class="w-full flex flex-col gap-2" description="Submit a search query to scroll to the results.">
+      <UFormGroup size="lg" :label="!state.username ? 'Search for players' : 'Search for players (Found: ' + filteredWithUsername().length + ')' " class="w-full flex flex-col gap-2" description="Press submit or enter to scroll to the results.">
         <div class="flex gap-2">
           <UInput
             class="w-full"
@@ -119,7 +120,7 @@ const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] 
             color="emerald"
             placeholder="whitep4nth3r"
           />
-          <UButton type="submit" color="emerald"icon="i-heroicons-magnifying-glass-16-solid">Search</UButton>
+          <UButton type="submit" color="emerald" class="font-semibold">Submit</UButton>
         </div>
       </UFormGroup>
     </UForm>
@@ -202,3 +203,9 @@ const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] 
     <USkeleton class="w-full h-8" />
   </section>
 </template>
+
+<style lang="css">
+  label{
+    font-size: large;
+  }
+</style>
