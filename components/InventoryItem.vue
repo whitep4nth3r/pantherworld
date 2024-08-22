@@ -17,15 +17,15 @@ const irradiated = computed(() => props.name.includes("irradiated"));
     :class="{ 'from-lime-600 via-lime-800': irradiated }">
     <span
       v-if="displayCount"
-      class="font-display absolute text-white bg-zinc-600 rounded-xl py1 px-2 left-2 -top-2 font-bold"
+      class="font-display absolute text-white bg-zinc-600 rounded-xl py1 px-2 -right-2 -top-2 font-bold"
       >{{ count }}x</span
     >
     <span
       v-if="extraInfo"
-      class="font-display absolute text-white bg-zinc-600 rounded-xl py1 px-2 left-2 -top-2 font-bold"
+      class="font-display absolute text-white bg-zinc-600 rounded-xl py1 px-2 -right-2 -top-2 font-bold"
       >{{ extraInfo }}</span
     >
-    <span v-if="cooked" class="font-display absolute text-white bg-zinc-600 rounded-xl py1 px-2 left-2 -top-2 font-bold"
+    <span v-if="cooked" class="font-display absolute text-white bg-zinc-600 rounded-xl py1 px-2 -right-2 -top-2 font-bold"
       >cooked</span
     >
 
