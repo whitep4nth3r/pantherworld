@@ -159,7 +159,7 @@ const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] 
                 alt="down arrow next to a-z"
                 height="16"
                 width="16" />
-              <div v-if="sortSetting.column !== column.key" class="h-4 w-4"></div>
+              <span v-if="sortSetting.column !== column.key" class="h-4 w-4"></span>
             </button>
           </th>
         </tr>
