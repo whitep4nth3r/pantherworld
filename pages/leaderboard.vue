@@ -49,10 +49,7 @@ const sortSetting = ref({
 });
 
 const players = computed(() => {
-  if (state.username)
-    return rankedPlayers.value.filter((player) =>
-      player.username.toLowerCase().includes(state.username.toLowerCase())
-    );
+  if (state.username) scrollToUser();
 
   if (!data.value) {
     return [];
@@ -89,6 +86,14 @@ function resetSearch() {
   state.username = "";
 }
 
+function scrollToUser() {
+  const playerFound = rankedPlayers.value.filter((player) => player.username.toLowerCase() === state.username.toLowerCase())[0]
+  if(playerFound) {
+    const targetElement = document.getElementById(playerFound.username);
+    targetElement?.scrollIntoView({ behavior: 'smooth', block:"center" });
+  }
+}
+
 const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] = [
   { key: "rank", title: "Rank", type: "num" },
   { key: "username", title: "Username", type: "az" },
@@ -105,7 +110,6 @@ const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] 
     <UForm
       :state="state"
       class="flex flex-row gap-2 w-full p-2"
-      @submit="resetSearch"
     >
       <UInput
         class="w-full"
@@ -116,7 +120,6 @@ const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] 
         placeholder="SEARCH..."
         size="lg"
       />
-      <UButton type="submit" size="lg" color="amber">CLEAR</UButton>
     </UForm>
 
     <table class="min-w-full divide-y divide-zinc-500 table-auto">
@@ -162,8 +165,10 @@ const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] 
       <tbody class="bg-black/90 divide-y divide-zinc-500">
         <tr
           v-for="player in players"
+          :id="player.username"
           :key="player.username"
-          :class="{ 'bg-violet-700 text-white': user?.name === player.username }">
+          :class="{ 'bg-violet-700 text-white': user?.name === player.username,
+                    'bg-amber-500 text-white': player.username.toLowerCase() === state.username.toLowerCase() }">
           <td class="px-6 py-3 whitespace-nowrap">
             <span v-if="player.rank === 0">🥇</span>
             <span v-else-if="player.rank === 1">🥈</span>
