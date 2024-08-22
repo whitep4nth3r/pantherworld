@@ -54,8 +54,13 @@ a:focus-visible {
   visibility: hidden !important;
 }
 
+.notificationToggleButton {
+  visibility: hidden;
+}
+
 @media screen and (min-width: 768px) {
-  [role="region"] {
+  [role="region"],
+  .notificationToggleButton {
     visibility: visible !important;
   }
 }

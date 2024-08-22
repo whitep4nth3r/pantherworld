@@ -32,6 +32,9 @@ importers:
       nuxt-auth-utils:
         specifier: ^0.1.0
         version: 0.1.0(magicast@0.3.4)(rollup@4.18.0)
+      nuxt-storage:
+        specifier: ^1.2.2
+        version: 1.2.2
       vue:
         specifier: latest
         version: 3.4.31
@@ -2872,6 +2875,9 @@ packages:
 
   nuxt-auth-utils@0.1.0:
     resolution: {integrity: sha512-FONe0CCM1NBZr8f92sOzlLAM76c0LtBwT2Xu/KBMRoMnJ2rmgKe5aSl5hlcEC7NpKmZgjm6DRcGl4XIbCikKrQ==}
+
+  nuxt-storage@1.2.2:
+    resolution: {integrity: sha512-quJbZ87NO7QRCSp7YZolot6VwktciSLuTS/sRl8NPz5rAWA84U5Py0y9FmAsbKTiaqJtFcCKSaJGzky948jA3w==}
 
   nuxt@3.12.3:
     resolution: {integrity: sha512-Qdkc+ucWwFcKsiL/OTF87jbgyFSymwPRKiiu0mvzsd/RXTn4hGiBduAlF3f7Yy0F9pDjSj8XHKDSnHYsDzm6rA==}
@@ -7205,6 +7211,8 @@ snapshots:
       - magicast
       - rollup
       - supports-color
+
+  nuxt-storage@1.2.2: {}
 
   nuxt@3.12.3(@opentelemetry/api@1.9.0)(@parcel/watcher@2.4.1)(@types/node@20.14.9)(ioredis@5.4.1)(magicast@0.3.4)(rollup@4.18.0)(terser@5.31.1)(vite@5.3.3(@types/node@20.14.9)(terser@5.31.1)):
     dependencies:
