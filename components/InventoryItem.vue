@@ -13,20 +13,20 @@ const irradiated = computed(() => props.name.includes("irradiated"));
 
 <template>
   <div
-    class="grid grid-cols-[2fr_5fr] gap-4 bg-zinc-800 rounded-lg relative items-center p-4 bg-gradient-to-t via-10% to-zinc-800 to-60%"
+    class="grid grid-cols-[2fr_5fr] grow gap-4 bg-zinc-800 rounded-lg relative items-center p-4 bg-gradient-to-t via-10% to-zinc-800 to-60%"
     :class="{ 'from-lime-600 via-lime-800': irradiated }">
-    <span v-if="displayCount" class="absolute text-white bg-zinc-600 rounded-xl py1 px-2 left-2 -top-2 italic font-bold"
+    <span
+      v-if="displayCount"
+      class="font-display absolute text-white bg-zinc-600 rounded-xl py1 px-2 left-2 -top-2 font-bold"
       >{{ count }}x</span
     >
     <span
       v-if="extraInfo"
-      class="absolute text-white bg-zinc-600 rounded-xl py1 px-2 left-2 -top-2 italic font-bold capitalize"
+      class="font-display absolute text-white bg-zinc-600 rounded-xl py1 px-2 left-2 -top-2 font-bold"
       >{{ extraInfo }}</span
     >
-    <span
-      v-if="cooked"
-      class="absolute text-white bg-zinc-600 rounded-xl py1 px-2 left-2 -top-2 italic font-bold capitalize"
-      >Cooked</span
+    <span v-if="cooked" class="font-display absolute text-white bg-zinc-600 rounded-xl py1 px-2 left-2 -top-2 font-bold"
+      >cooked</span
     >
 
     <span class="justify-center w-[4rem] h-[4rem] p-4 rounded-full items-center flex bg-zinc-600 text-2xl leading-none">

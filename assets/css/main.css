@@ -4,6 +4,41 @@
 
 /* WIP - we can define global base styles here */
 
+@layer base {
+  @font-face {
+    font-family: "Ubuntu Mono";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(/fonts/UbuntuMono-Regular.woff2) format("woff2");
+  }
+
+  @font-face {
+    font-family: "Lacquer";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(/fonts/Lacquer-Regular.woff2) format("woff2");
+  }
+}
+
+html {
+  @apply font-mono;
+}
+
+h1,
+h2 {
+  @apply font-display;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  @apply font-mono;
+  @apply font-bold;
+}
+
 a:focus,
 a:active,
 a:focus-visible {
@@ -11,4 +46,16 @@ a:focus-visible {
   @apply ring;
   @apply ring-emerald-300;
   @apply rounded-lg;
+}
+
+/* for event feed, beware if another role=region ends up being added to the app */
+[role="region"] {
+  height: 100%;
+  visibility: hidden !important;
+}
+
+@media screen and (min-width: 768px) {
+  [role="region"] {
+    visibility: visible !important;
+  }
 }

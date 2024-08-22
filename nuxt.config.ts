@@ -30,6 +30,6 @@ export default defineNuxtConfig({
     },
   },
   devtools: { enabled: true },
-  modules: ["@nuxtjs/html-validator", "nuxt-auth-utils", "@formkit/auto-animate/nuxt", "@nuxt/ui"],
+  modules: ["@nuxtjs/html-validator", "nuxt-auth-utils", "@formkit/auto-animate/nuxt", "@nuxt/ui", "@vueuse/nuxt"],
   compatibilityDate: "2024-07-04",
 });

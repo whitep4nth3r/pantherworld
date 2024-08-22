@@ -96,7 +96,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <h1 class="text-4xl font-bold mb-12">Inventory</h1>
+  <h1 class="text-4xl font-bold mb-12">inventory</h1>
 
   <div v-if="data">
     <section
@@ -170,30 +170,24 @@ onMounted(() => {
     </section>
   </div>
 
-  <div v-else>
+  <section v-else>
     <div class="flex flex-col rounded-lg p-6 justify-center items-center align gap-2">
-      <USkeleton
-        class="w-[124px] h-[124px]"
-        :ui="{ rounded: 'rounded-full' }" />
-      <USkeleton class="h-8 w-[250px]" :ui="{ rounded: 'rounded-lg'}" />
+      <USkeleton class="w-[124px] h-[124px]" :ui="{ rounded: 'rounded-full' }" />
+      <USkeleton class="h-8 w-[250px]" :ui="{ rounded: 'rounded-lg' }" />
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4">
-      <USkeleton 
-        class="flex flex-row gap-4 rounded-lg p-4 items-center h-16" />
-      <USkeleton 
-        class="flex flex-row gap-4 rounded-lg p-4 items-center h-16" />
-      <USkeleton
-        class="flex flex-row gap-4 rounded-lg p-4 items-center h-16" />
-      <USkeleton 
-        class="flex flex-row gap-4 rounded-lg p-4 items-center h-16" />
+      <USkeleton class="flex flex-row gap-4 rounded-lg p-4 items-center h-16" />
+      <USkeleton class="flex flex-row gap-4 rounded-lg p-4 items-center h-16" />
+      <USkeleton class="flex flex-row gap-4 rounded-lg p-4 items-center h-16" />
+      <USkeleton class="flex flex-row gap-4 rounded-lg p-4 items-center h-16" />
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-      <USkeleton class="rounded-lg h-32"/>
-      <USkeleton class="rounded-lg h-32"/>
-      <USkeleton class="rounded-lg h-32"/>
-      <USkeleton class="rounded-lg h-32"/>
-      <USkeleton class="rounded-lg h-32"/>
-      <USkeleton class="rounded-lg h-32"/>
+      <USkeleton class="rounded-lg h-32" />
+      <USkeleton class="rounded-lg h-32" />
+      <USkeleton class="rounded-lg h-32" />
+      <USkeleton class="rounded-lg h-32" />
+      <USkeleton class="rounded-lg h-32" />
+      <USkeleton class="rounded-lg h-32" />
     </div>
-  </div>
+  </section>
 </template>
