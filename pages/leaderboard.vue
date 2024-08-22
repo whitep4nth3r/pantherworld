@@ -80,8 +80,12 @@ function onSortClicked(column: keyof RankedPlayer) {
   }
 }
 
+function filteredWithUsername(){
+  return rankedPlayers.value.filter((player) => player.username.toLowerCase().includes(state.username.toLowerCase()))
+}
+
 function scrollToUser() {
-  const player = rankedPlayers.value.filter((player) => player.username.toLowerCase().includes(state.username.toLowerCase()))[0]
+  const player = filteredWithUsername()[0]
   if(player) {
     const targetElement = document.getElementById(player.username);
     targetElement?.scrollIntoView({ behavior: 'smooth', block:"center" });
@@ -103,21 +107,19 @@ const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] 
   <section class="overflow-x-auto" v-if="data">
     <UForm
       :state="state"
-      class="w-full p-1"
+      class="w-full p-1 pb-4"
       @submit="scrollToUser"
       >
-      <UFormGroup label="Search for a player" class="w-full">
+      <UFormGroup size="lg" :label="!state.username ? 'Search for a player' : 'Search for a player (Found: ' + filteredWithUsername().length + ')' " class="w-full flex flex-col gap-2" description="Submit a search query to scroll to the results.">
         <div class="flex gap-2">
           <UInput
-          class="w-full"
-          v-model="state.username"
-          icon="i-heroicons-magnifying-glass-20-solid"
-          trailing
-          color="amber"
-          placeholder="Example: whitep4nth3r"
-          size="lg"
+            class="w-full"
+            v-model="state.username"
+            trailing
+            color="emerald"
+            placeholder="whitep4nth3r"
           />
-          <UButton type="submit" color="amber">SEARCH</UButton>
+          <UButton type="submit" color="emerald"icon="i-heroicons-magnifying-glass-16-solid">Search</UButton>
         </div>
       </UFormGroup>
     </UForm>
@@ -168,7 +170,7 @@ const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] 
           :id="player.username"
           :key="player.username"
           :class="{
-            'bg-amber-500 text-zinc-900': state.username && player.username.toLowerCase().includes(state.username.toLowerCase()),
+            'bg-emerald-300 text-zinc-900': state.username && player.username.toLowerCase().includes(state.username.toLowerCase()),
             'bg-violet-700 text-white': !state.username && user?.name === player.username }">
           <td class="px-6 py-3 whitespace-nowrap">
             <span v-if="player.rank === 0">🥇</span>
