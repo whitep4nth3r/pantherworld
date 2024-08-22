@@ -48,9 +48,7 @@ const sortSetting = ref({
   direction: "asc" as "asc" | "desc",
 });
 
-const players = computed(() => {
-  if (state.username) scrollToUser();
-
+const sortedPlayers = computed(() => {
   if (!data.value) {
     return [];
   }
@@ -82,14 +80,10 @@ function onSortClicked(column: keyof RankedPlayer) {
   }
 }
 
-function resetSearch() {
-  state.username = "";
-}
-
 function scrollToUser() {
-  const playerFound = rankedPlayers.value.filter((player) => player.username.toLowerCase() === state.username.toLowerCase())[0]
-  if(playerFound) {
-    const targetElement = document.getElementById(playerFound.username);
+  const player = rankedPlayers.value.filter((player) => player.username.toLowerCase().includes(state.username.toLowerCase()))[0]
+  if(player) {
+    const targetElement = document.getElementById(player.username);
     targetElement?.scrollIntoView({ behavior: 'smooth', block:"center" });
   }
 }
@@ -109,17 +103,23 @@ const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] 
   <section class="overflow-x-auto" v-if="data">
     <UForm
       :state="state"
-      class="flex flex-row gap-2 w-full p-2"
-    >
-      <UInput
-        class="w-full"
-        v-model="state.username"
-        icon="i-heroicons-magnifying-glass-20-solid"
-        trailing
-        color="amber"
-        placeholder="SEARCH..."
-        size="lg"
-      />
+      class="w-full p-1"
+      @submit="scrollToUser"
+      >
+      <UFormGroup label="Search for a player" class="w-full">
+        <div class="flex gap-2">
+          <UInput
+          class="w-full"
+          v-model="state.username"
+          icon="i-heroicons-magnifying-glass-20-solid"
+          trailing
+          color="amber"
+          placeholder="Example: whitep4nth3r"
+          size="lg"
+          />
+          <UButton type="submit" color="amber">SEARCH</UButton>
+        </div>
+      </UFormGroup>
     </UForm>
 
     <table class="min-w-full divide-y divide-zinc-500 table-auto">
@@ -164,24 +164,25 @@ const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] 
       </thead>
       <tbody class="bg-black/90 divide-y divide-zinc-500">
         <tr
-          v-for="player in players"
+          v-for="player in sortedPlayers"
           :id="player.username"
           :key="player.username"
-          :class="{ 'bg-violet-700 text-white': user?.name === player.username,
-                    'bg-amber-500 text-white': player.username.toLowerCase() === state.username.toLowerCase() }">
+          :class="{
+            'bg-amber-500 text-zinc-900': state.username && player.username.toLowerCase().includes(state.username.toLowerCase()),
+            'bg-violet-700 text-white': !state.username && user?.name === player.username }">
           <td class="px-6 py-3 whitespace-nowrap">
             <span v-if="player.rank === 0">🥇</span>
             <span v-else-if="player.rank === 1">🥈</span>
             <span v-else-if="player.rank === 2">🥉</span>
             <span v-else>{{ player.rank + 1 }}</span>
           </td>
-          <td class="px-6 py-3 whitespace-nowrap flex items-center text-zinc-100">
+          <td class="px-6 py-3 whitespace-nowrap flex items-center">
             {{ player.username }}
           </td>
-          <td class="px-6 py-3 whitespace-nowrap text-zinc-100">
+          <td class="px-6 py-3 whitespace-nowrap">
             {{ player.items }}
           </td>
-          <td class="px-6 py-3 whitespace-nowrap text-zinc-100">
+          <td class="px-6 py-3 whitespace-nowrap">
             {{ Intl.NumberFormat().format(player.wealth_index as number) }}
           </td>
         </tr>
