@@ -80,17 +80,17 @@ function onSortClicked(column: keyof RankedPlayer) {
   }
 }
 
-function filteredWithUsername(){
-  return rankedPlayers.value.filter((player) => player.username.toLowerCase().includes(state.username.toLowerCase()))
+function filteredWithUsername() {
+  return rankedPlayers.value.filter((player) => player.username.toLowerCase().includes(state.username.toLowerCase()));
 }
 
 function scrollToUser() {
-  if(!state.username) return; 
+  if (!state.username) return;
 
-  const player = filteredWithUsername()[0]
-  if(player) {
+  const player = filteredWithUsername()[0];
+  if (player) {
     const targetElement = document.getElementById(player.username);
-    targetElement?.scrollIntoView({ behavior: 'smooth', block:"center" });
+    targetElement?.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 }
 
@@ -106,20 +106,16 @@ const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] 
   <h1 class="text-4xl font-bold mb-12">leaderboard</h1>
 
   <section class="overflow-x-auto" v-if="data">
-    <UForm
-      :state="state"
-      class="w-full p-1 pb-4"
-      @submit="scrollToUser"
-      >
-      <UFormGroup size="lg" :label="!state.username ? 'Search for players' : 'Search for players (Found: ' + filteredWithUsername().length + ')' " class="w-full flex flex-col gap-2" description="Press submit or enter to scroll to the results.">
+    <UForm :state="state" class="w-full p-1 pb-4" @submit="scrollToUser">
+      <UFormGroup
+        size="lg"
+        :label="
+          !state.username ? 'Search for players' : 'Search for players (Found: ' + filteredWithUsername().length + ')'
+        "
+        class="w-full flex flex-col gap-2"
+        description="Press submit or enter to scroll to the results.">
         <div class="flex gap-2">
-          <UInput
-            class="w-full"
-            v-model="state.username"
-            trailing
-            color="emerald"
-            placeholder="whitep4nth3r"
-          />
+          <UInput class="w-full" v-model="state.username" trailing color="emerald" placeholder="whitep4nth3r" />
           <UButton type="submit" color="emerald" class="font-semibold">Submit</UButton>
         </div>
       </UFormGroup>
@@ -171,8 +167,10 @@ const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] 
           :id="player.username"
           :key="player.username"
           :class="{
-            'bg-emerald-300 text-zinc-900': state.username && player.username.toLowerCase().includes(state.username.toLowerCase()),
-            'bg-violet-700 text-white': !state.username && user?.name === player.username }">
+            'bg-emerald-300 text-zinc-900':
+              state.username && player.username.toLowerCase().includes(state.username.toLowerCase()),
+            'bg-violet-700 text-slate-50': !state.username && user?.name === player.username,
+          }">
           <td class="px-6 py-3 whitespace-nowrap">
             <span v-if="player.rank === 0">🥇</span>
             <span v-else-if="player.rank === 1">🥈</span>
@@ -205,7 +203,7 @@ const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] 
 </template>
 
 <style lang="css">
-  label{
-    font-size: large;
-  }
+label {
+  font-size: large;
+}
 </style>

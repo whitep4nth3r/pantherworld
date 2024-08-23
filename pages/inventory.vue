@@ -34,6 +34,25 @@ const { status, data, error, refresh } = useFetch<InventoryResponse>(`inventory/
   },
 });
 
+const filters = ref(["all", "cooked", "raw"]);
+const activeFilter = ref("all");
+
+function setFilter(type: string) {
+  activeFilter.value = type;
+}
+
+const getItems = computed(() => {
+  switch (activeFilter.value) {
+    case "raw":
+      return data.value?.inventory.items.filter((item) => item.cooked !== true);
+    case "cooked":
+      return data.value?.inventory.items.filter((item) => item.cooked === true);
+    case "all":
+    default:
+      return data.value?.inventory.items;
+  }
+});
+
 const locationBg = computed(() => {
   switch (data.value?.inventory.location) {
     case "beach":
@@ -148,13 +167,28 @@ onMounted(() => {
         bottomText="Wealth Index" />
     </section>
 
+    <fieldset class="flex flex-row gap-4 my-8">
+      <div v-for="(filter, index) in filters" :key="index" class="flex gap-1 items-center">
+        <input
+          :id="filter"
+          type="radio"
+          name="set_filter"
+          v-model="activeFilter"
+          :value="filter"
+          class="accent-emerald-600 capitalize focus:outline-none focus:ring-2 focus:ring-emerald-300 active:outline-none active:ring-2 active:ring-emerald-300" />
+        <label :for="filter" class="font-display text-slate-50 text-2xl">
+          {{ filter }}
+        </label>
+      </div>
+    </fieldset>
+
     <section class="my-4">
       <div
-        v-if="data.inventory.items.length > 0"
+        v-if="getItems && getItems.length > 0"
         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3"
         v-auto-animate>
         <InventoryItem
-          v-for="item in data.inventory.items"
+          v-for="item in getItems"
           :key="item.name"
           :name="item.name"
           :count="item.count"
@@ -163,7 +197,7 @@ onMounted(() => {
       </div>
 
       <h2
-        v-if="data.inventory.items.length === 0"
+        v-if="getItems && getItems.length === 0"
         class="flex flex-col gap-1 bg-zinc-800 rounded-lg relative text-center p-4 font-bold">
         No items!
       </h2>
