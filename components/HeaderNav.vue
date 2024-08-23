@@ -27,7 +27,7 @@ onClickOutside(target, (event) => (open.value = false));
 <template>
   <button
     type="button"
-    class="text-white notificationToggleButton flex gap-2 justify-between rounded-lg px-4 py-2 bottom-2 left-2 fixed focus:outline-none focus:ring focus:ring-emerald-300 active:ring active:ring-emerald-300 z-10 bg-zinc-700 shadow"
+    class="text-slate-50 notificationToggleButton flex gap-2 justify-between rounded-lg px-4 py-2 bottom-2 left-2 fixed focus:outline-none focus:ring focus:ring-emerald-300 active:ring active:ring-emerald-300 z-10 bg-zinc-700 shadow"
     @click="() => toggleNotifications()"
     v-bind:aria-label="showNotifications ? 'Turn off event feed in sidebar' : 'Turn on event feed in sidebar'">
     <img src="/icons/utils/eye_open.svg" height="24" width="24" alt="eye" v-if="showNotifications" />
@@ -114,7 +114,7 @@ onClickOutside(target, (event) => (open.value = false));
         <button
           type="button"
           @click="logout"
-          class="font-display text-white font-medium focus:outline-none focus:ring focus:ring-emerald-300 text-lg p-2 rounded-lg transition">
+          class="font-display text-slate-50 font-medium focus:outline-none focus:ring focus:ring-emerald-300 text-lg p-2 rounded-lg transition">
           log out
         </button>
       </div>
@@ -122,7 +122,7 @@ onClickOutside(target, (event) => (open.value = false));
         href="/api/auth/twitch"
         external
         v-if="!loggedIn"
-        class="font-display text-white font-medium bg-violet-700 hover:bg-violet-500 focus:bg-violet-500 active:bg-violet-500 focus:outline-none focus:ring focus:ring-violet-700 text-lg p-2 rounded-lg transition self-center flex flex-row gap-1 justify-between items-center"
+        class="font-display text-slate-50 font-medium bg-violet-700 hover:bg-violet-500 focus:bg-violet-500 active:bg-violet-500 focus:outline-none focus:ring focus:ring-violet-700 text-lg p-2 rounded-lg transition self-center flex flex-row gap-1 justify-between items-center"
         ><span><img src="/icons/menu/twitch.svg" role="presentation" height="22" width="22" /></span>
         <span>log in<span class="sr-only">with Twitch</span></span></NuxtLink
       >
