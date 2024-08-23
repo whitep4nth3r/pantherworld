@@ -32,85 +32,6 @@ type Event = {
   type: string;
 };
 
-function getNotifTitle(event: Event): string {
-  switch (event.type) {
-    case "scanned":
-      return `${event.data.username} scanned ${event.data.zone} zone and found ${event.data.count} items`;
-    case "cookfail":
-      return `${event.data.username} spoiled a recipe! They lost ${event.data.ingredientList?.join(", ")}!`;
-    case "cook":
-      return `${event.data.username} cooked ${event.data.recipe}${event.data.lost && event.data.lost?.length > 0 ? `, but lost ${event.data.lost.join(", ")}}!` : ``} (rarity: ${event.data.rarity})`;
-    case "release":
-      return `${event.data.count} items released in the ${event.data.zone} zone`;
-    case "move":
-      return `${event.data.username} moved to the ${event.data.toZone} zone`;
-    case "claim":
-      return `${event.data.username} claimed ${event.data.item} in the ${event.data.zone} zone (rarity:
-        ${event.data.rarity})`;
-    case "drop":
-      return `${event.data.username} dropped ${event.data.item} in the ${event.data.zone} zone (rarity:
-        ${event.data.rarity})`;
-    case "gift":
-      return `${event.data.giver} gifted ${event.data.item} to ${event.data.receiver} in the
-        ${event.data.zone} zone (rarity: ${event.data.rarity})`;
-    case "spawn":
-      // @ts-ignore
-      return `${event.data.item.name} spawned in the ${event.data.zone} zone (rarity: ${event.data.item.rarity})`;
-    default:
-      return "";
-  }
-}
-
-function getNotifAvatar(type: string): string {
-  switch (type) {
-    case "scanned":
-      return "/icons/notifications/scanned.png";
-    case "cookfail":
-      return "/icons/notifications/cookfail.png";
-    case "cook":
-      return "/icons/notifications/cook.png";
-    case "release":
-      return "/icons/notifications/release.png";
-    case "move":
-      return "/icons/notifications/move.png";
-    case "claim":
-      return "/icons/notifications/claim.png";
-    case "drop":
-      return "/icons/notifications/drop.png";
-    case "gift":
-      return "/icons/notifications/gift.png";
-    case "spawn":
-      return "/icons/notifications/spawn.png";
-    default:
-      return "";
-  }
-}
-
-function getNotifColors(type: string): { background: string; text: string } {
-  switch (type) {
-    case "scanned":
-      return { background: "bg-notif-scanned dark:bg-notif-scanned", text: "text-notif-black dark:text-notif-black" };
-    case "cookfail":
-      return { background: "bg-notif-cookfail dark:bg-notif-cookfail", text: "text-notif-white dark:text-notif-white" };
-    case "cook":
-      return { background: "bg-notif-cook dark:bg-notif-cook", text: "text-notif-black dark:text-notif-black" };
-    case "release":
-      return { background: "bg-notif-release dark:bg-notif-release", text: "text-notif-white dark:text-notif-white" };
-    case "move":
-      return { background: "bg-notif-move dark:bg-notif-move", text: "text-notif-white dark:text-notif-white" };
-    case "claim":
-      return { background: "bg-notif-claim dark:bg-notif-claim", text: "text-notif-black dark:text-notif-black" };
-    case "drop":
-      return { background: "bg-notif-drop dark:bg-notif-drop", text: "text-notif-white dark:text-notif-white" };
-    case "gift":
-      return { background: "bg-notif-gift dark:bg-notif-gift", text: "text-notif-white dark:text-notif-white" };
-    case "spawn":
-      return { background: "bg-notif-spawn dark:bg-notif-spawn", text: "text-notif-white dark:text-notif-white" };
-    default:
-      return { background: "", text: "" };
-  }
-}
-
 function getNotifProgressBg(type: string): string {
   switch (type) {
     case "scanned":
@@ -133,24 +54,93 @@ const { status, data, send, open, close } = useWebSocket("wss://p4nth3rb0t-mainf
   autoReconnect: true,
 });
 
+function getNotificationData(messageObj: Event): {
+  title: string;
+  avatar: { src: string; alt: string };
+  ui: { background: string; text: string };
+} {
+  switch (messageObj.type) {
+    case "scanned":
+      return {
+        title: `${messageObj.data.username} scanned ${messageObj.data.zone} zone and found ${messageObj.data.count} items`,
+        avatar: { src: "/icons/notifications/scanned.png", alt: "eyes" },
+        ui: { background: "bg-notif-scanned dark:bg-notif-scanned", text: "text-notif-black dark:text-notif-black" },
+      };
+    case "cookfail":
+      return {
+        title: `${messageObj.data.username} spoiled a recipe! They lost ${messageObj.data.ingredientList?.join(", ")}!`,
+        avatar: { src: "/icons/notifications/cookfail.png", alt: "emoji being sick" },
+        ui: { background: "bg-notif-cookfail dark:bg-notif-cookfail", text: "text-notif-white dark:text-notif-white" },
+      };
+    case "cook":
+      return {
+        title: `${messageObj.data.username} cooked ${messageObj.data.recipe}${messageObj.data.lost && messageObj.data.lost?.length > 0 ? `, but lost ${messageObj.data.lost.join(", ")}}!` : ``} (rarity: ${messageObj.data.rarity})`,
+        avatar: { src: "/icons/notifications/cook.png", alt: "egg in frying pan" },
+        ui: { background: "bg-notif-cook dark:bg-notif-cook", text: "text-notif-black dark:text-notif-black" },
+      };
+    case "release":
+      return {
+        title: `${messageObj.data.count} items released in the ${messageObj.data.zone} zone`,
+        avatar: { src: "/icons/notifications/release.png", alt: "cardboard box" },
+        ui: { background: "bg-notif-release dark:bg-notif-release", text: "text-notif-white dark:text-notif-white" },
+      };
+    case "move":
+      return {
+        title: `${messageObj.data.username} moved to the ${messageObj.data.toZone} zone`,
+        avatar: { src: "/icons/notifications/move.png", alt: "arrow pointing right" },
+        ui: { background: "bg-notif-move dark:bg-notif-move", text: "text-notif-white dark:text-notif-white" },
+      };
+    case "claim":
+      return {
+        title: `${messageObj.data.username} claimed ${messageObj.data.item} in the ${messageObj.data.zone} zone (rarity:
+        ${messageObj.data.rarity})`,
+        avatar: { src: "/icons/notifications/claim.png", alt: "back pack" },
+        ui: { background: "bg-notif-claim dark:bg-notif-claim", text: "text-notif-black dark:text-notif-black" },
+      };
+    case "drop":
+      return {
+        title: `${messageObj.data.username} dropped ${messageObj.data.item} in the ${messageObj.data.zone} zone (rarity:
+        ${messageObj.data.rarity})`,
+        avatar: { src: "/icons/notifications/drop.png", alt: "hand with downward facing palm" },
+        ui: { background: "bg-notif-drop dark:bg-notif-drop", text: "text-notif-white dark:text-notif-white" },
+      };
+    case "gift":
+      return {
+        title: `${messageObj.data.giver} gifted ${messageObj.data.item} to ${messageObj.data.receiver} in the
+        ${messageObj.data.zone} zone (rarity: ${messageObj.data.rarity})`,
+        avatar: { src: "/icons/notifications/gift.png", alt: "a gift wrapped up in a bow" },
+        ui: { background: "bg-notif-gift dark:bg-notif-gift", text: "text-notif-white dark:text-notif-white" },
+      };
+    case "spawn":
+      return {
+        // @ts-ignore
+        title: `${messageObj.data.item.name} spawned in the ${messageObj.data.zone} zone (rarity: ${messageObj.data.item.rarity})`,
+        avatar: { src: "/icons/notifications/spawn.png", alt: "the world centred on africa and europe" },
+        ui: { background: "bg-notif-spawn dark:bg-notif-spawn", text: "text-notif-white dark:text-notif-white" },
+      };
+    default:
+      return { title: "", avatar: { src: "", alt: "" }, ui: { background: "", text: "" } };
+  }
+}
+
 watch(data, (message) => {
   const messageObj = JSON.parse(message);
 
   if (validEvents.includes(messageObj.event)) {
-    const uiColours = getNotifColors(messageObj.type);
+    const notifData = getNotificationData(messageObj);
 
     toast.add({
       id: messageObj.id,
-      title: getNotifTitle(messageObj),
+      title: notifData.title,
       timeout: 6000,
-      avatar: { src: getNotifAvatar(messageObj.type), size: "sm" },
+      avatar: { src: notifData.avatar.src, size: "sm", alt: notifData.avatar.alt },
       icon: "",
       // @ts-ignore
       closeButton: null,
       ui: {
-        background: uiColours.background,
-        title: uiColours.text,
-        description: uiColours.text,
+        background: notifData.ui.background,
+        title: notifData.ui.text,
+        description: notifData.ui.text,
         padding: "p-2",
         ring: "",
         shadow: "shadow-xl",
