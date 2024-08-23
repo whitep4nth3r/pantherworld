@@ -15,6 +15,10 @@ const { status, data, error, refresh } = useFetch<FullLeaderboardResponse | null
   lazy: true,
 });
 
+const state = reactive({
+  username: "",
+});
+
 type RankedPlayer = Player & {
   rank: number;
 };
@@ -76,6 +80,20 @@ function onSortClicked(column: keyof RankedPlayer) {
   }
 }
 
+function filteredWithUsername(){
+  return rankedPlayers.value.filter((player) => player.username.toLowerCase().includes(state.username.toLowerCase()))
+}
+
+function scrollToUser() {
+  if(!state.username) return; 
+
+  const player = filteredWithUsername()[0]
+  if(player) {
+    const targetElement = document.getElementById(player.username);
+    targetElement?.scrollIntoView({ behavior: 'smooth', block:"center" });
+  }
+}
+
 const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] = [
   { key: "rank", title: "Rank", type: "num" },
   { key: "username", title: "Username", type: "az" },
@@ -85,10 +103,28 @@ const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] 
 </script>
 
 <template>
-  <h1 class="text-4xl font-bold mb-4">leaderboard</h1>
-  <p class="mb-12">Click the column headers to sort and re-order.</p>
+  <h1 class="text-4xl font-bold mb-12">leaderboard</h1>
 
   <section class="overflow-x-auto" v-if="data">
+    <UForm
+      :state="state"
+      class="w-full p-1 pb-4"
+      @submit="scrollToUser"
+      >
+      <UFormGroup size="lg" :label="!state.username ? 'Search for players' : 'Search for players (Found: ' + filteredWithUsername().length + ')' " class="w-full flex flex-col gap-2" description="Press submit or enter to scroll to the results.">
+        <div class="flex gap-2">
+          <UInput
+            class="w-full"
+            v-model="state.username"
+            trailing
+            color="emerald"
+            placeholder="whitep4nth3r"
+          />
+          <UButton type="submit" color="emerald" class="font-semibold">Submit</UButton>
+        </div>
+      </UFormGroup>
+    </UForm>
+
     <table class="min-w-full divide-y divide-zinc-500 table-auto">
       <thead class="bg-zinc-800">
         <tr>
@@ -132,21 +168,24 @@ const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] 
       <tbody class="bg-black/90 divide-y divide-zinc-500">
         <tr
           v-for="player in sortedPlayers"
+          :id="player.username"
           :key="player.username"
-          :class="{ 'bg-violet-700 text-white': user?.name === player.username }">
+          :class="{
+            'bg-emerald-300 text-zinc-900': state.username && player.username.toLowerCase().includes(state.username.toLowerCase()),
+            'bg-violet-700 text-white': !state.username && user?.name === player.username }">
           <td class="px-6 py-3 whitespace-nowrap">
             <span v-if="player.rank === 0">🥇</span>
             <span v-else-if="player.rank === 1">🥈</span>
             <span v-else-if="player.rank === 2">🥉</span>
             <span v-else>{{ player.rank + 1 }}</span>
           </td>
-          <td class="px-6 py-3 whitespace-nowrap flex items-center text-zinc-100">
+          <td class="px-6 py-3 whitespace-nowrap flex items-center">
             {{ player.username }}
           </td>
-          <td class="px-6 py-3 whitespace-nowrap text-zinc-100">
+          <td class="px-6 py-3 whitespace-nowrap">
             {{ player.items }}
           </td>
-          <td class="px-6 py-3 whitespace-nowrap text-zinc-100">
+          <td class="px-6 py-3 whitespace-nowrap">
             {{ Intl.NumberFormat().format(player.wealth_index as number) }}
           </td>
         </tr>
@@ -164,3 +203,9 @@ const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] 
     <USkeleton class="w-full h-8" />
   </section>
 </template>
+
+<style lang="css">
+  label{
+    font-size: large;
+  }
+</style>
