@@ -15,8 +15,12 @@ const { status, data, error, refresh } = useFetch<FullLeaderboardResponse | null
   lazy: true,
 });
 
-const state = reactive({
+const state = reactive<{
+  username: string;
+  usernameSearchIndex: number;
+}>({
   username: "",
+  usernameSearchIndex: 0,
 });
 
 type RankedPlayer = Player & {
@@ -80,14 +84,23 @@ function onSortClicked(column: keyof RankedPlayer) {
   }
 }
 
-function filteredWithUsername() {
-  return rankedPlayers.value.filter((player) => player.username.toLowerCase().includes(state.username.toLowerCase()));
+function filteredWithUsername(): RankedPlayer[] {
+  if(!sortedPlayers) return [];
+  return sortedPlayers.value.filter((player) =>
+    player.username.toLowerCase().includes(state.username.toLowerCase())
+  );
 }
 
 function scrollToUser() {
   if (!state.username) return;
 
-  const player = filteredWithUsername()[0];
+  const playersFound = filteredWithUsername();
+
+  if (state.usernameSearchIndex === playersFound.length)
+    state.usernameSearchIndex = 1;
+  else state.usernameSearchIndex += 1;
+
+  const player = playersFound[state.usernameSearchIndex - 1];
   if (player) {
     const targetElement = document.getElementById(player.username);
     targetElement?.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -177,7 +190,16 @@ const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] 
             <span v-else-if="player.rank === 2">🥉</span>
             <span v-else>{{ player.rank + 1 }}</span>
           </td>
-          <td class="px-6 py-3 whitespace-nowrap flex items-center">
+          <td
+            v-if="state.username && filteredWithUsername()[state.usernameSearchIndex - 1] && (filteredWithUsername()[state.usernameSearchIndex - 1].username === player.username)"
+            class="px-6 py-3 whitespace-nowrap flex items-center"
+          >
+            <mark>{{ player.username }}</mark>
+          </td>
+          <td
+            v-else
+            class="px-6 py-3 whitespace-nowrap flex items-center"
+          >
             {{ player.username }}
           </td>
           <td class="px-6 py-3 whitespace-nowrap">
