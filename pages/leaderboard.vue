@@ -194,7 +194,7 @@ const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] 
             v-if="state.username && filteredWithUsername()[state.usernameSearchIndex - 1] && (filteredWithUsername()[state.usernameSearchIndex - 1].username === player.username)"
             class="px-6 py-3 whitespace-nowrap flex items-center"
           >
-            <mark>{{ player.username }}</mark>
+          {{ player.username }}⬅️
           </td>
           <td
             v-else
