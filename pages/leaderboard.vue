@@ -191,14 +191,19 @@ const columns: { key: keyof RankedPlayer; title: string; type: "num" | "az" }[] 
             <span v-else>{{ player.rank + 1 }}</span>
           </td>
           <td
-            v-if="state.username && filteredWithUsername()[state.usernameSearchIndex - 1] && (filteredWithUsername()[state.usernameSearchIndex - 1].username === player.username)"
-            class="px-6 py-3 whitespace-nowrap flex items-center"
+            v-if="
+              state.username &&
+              filteredWithUsername()[state.usernameSearchIndex - 1] &&
+              filteredWithUsername()[state.usernameSearchIndex - 1].username ===
+                player.username
+            "
+            class="px-6 py-3 whitespace-nowrap flex items-center md:w-12 w-20"
           >
-          {{ player.username }}⬅️
+            {{ player.username }} ⬅️
           </td>
           <td
             v-else
-            class="px-6 py-3 whitespace-nowrap flex items-center"
+            class="px-6 py-3 whitespace-nowrap flex items-center md:w-12"
           >
             {{ player.username }}
           </td>
