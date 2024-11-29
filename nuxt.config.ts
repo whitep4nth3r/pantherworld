@@ -55,6 +55,7 @@ export default defineNuxtConfig({
       project: "pantherworld",
       authToken: process.env.SENTRY_AUTH_TOKEN,
     },
+    debug: true,
   },
 
   sourcemap: {
