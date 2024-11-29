@@ -14,11 +14,20 @@
     "@nuxt/ui": "^2.18.4",
     "@nuxtjs/html-validator": "^1.8.2",
     "@nuxtjs/tailwindcss": "^6.12.0",
+    "@sentry/nuxt": "^8.41.0",
     "@vueuse/core": "^11.0.1",
     "@vueuse/nuxt": "^11.0.1",
+    "import-in-the-middle": "^1.11.2",
     "nuxt": "^3.12.3",
     "nuxt-auth-utils": "^0.1.0",
     "vue": "latest"
   },
-  "packageManager": "pnpm@9.4.0+sha512.f549b8a52c9d2b8536762f99c0722205efc5af913e77835dbccc3b0b0b2ca9e7dc8022b78062c17291c48e88749c70ce88eb5a74f1fa8c4bf5e18bb46c8bd83a"
+  "packageManager": "pnpm@9.4.0+sha512.f549b8a52c9d2b8536762f99c0722205efc5af913e77835dbccc3b0b0b2ca9e7dc8022b78062c17291c48e88749c70ce88eb5a74f1fa8c4bf5e18bb46c8bd83a",
+  "pnpm": {
+    "overrides": {
+      "nitropack": "~2.9.7",
+      "@vercel/nft": "^0.27.4",
+      "ofetch": "^1.4.0"
+    }
+  }
 }
