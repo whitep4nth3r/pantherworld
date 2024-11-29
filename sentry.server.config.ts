@@ -1,7 +1,6 @@
 import * as Sentry from "@sentry/nuxt";
  
 Sentry.init({
-  spotlight: true,
   dsn: process.env.SENTRY_DSN,
   environment: process.env.ENV,
   enabled: process.env.ENV === "production",
