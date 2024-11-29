@@ -4,7 +4,6 @@ const config = useRuntimeConfig();
 
 Sentry.init({
   dsn: config.public.sentry_dsn,
-  // ************* //
   enabled: config.env === "production",
   environment: process.env.ENV,
   
