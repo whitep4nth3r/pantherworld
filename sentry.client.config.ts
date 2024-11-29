@@ -5,7 +5,7 @@ const config = useRuntimeConfig();
 Sentry.init({
   dsn: config.public.sentry_dsn,
   enabled: config.env === "production",
-  environment: process.env.ENV,
+  environment: config.env as string,
   
   // We recommend adjusting this value in production, or using tracesSampler
   // for finer control
