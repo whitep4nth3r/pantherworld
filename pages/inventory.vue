@@ -102,7 +102,7 @@ const spawnDaysAgo = computed(() => {
     return "Yesterday";
   }
 
-  return `${diff} days ago`;
+  return `${Math.trunc(diff)} days ago`;
 });
 
 onMounted(() => {
