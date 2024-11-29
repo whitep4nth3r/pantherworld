@@ -29,8 +29,10 @@ useSeoMeta({
       <h2 class="text-3xl font-bold my-8">Player commands</h2>
       <table class="table-auto border-collapse">
         <thead>
-          <th colspan="2" class="border border-zinc-500 p-2">Command</th>
-          <th class="border border-zinc-500 p-2">Details</th>
+          <tr>
+            <th colspan="2" class="border border-zinc-500 p-2">Command</th>
+            <th class="border border-zinc-500 p-2">Details</th>
+          </tr>
         </thead>
         <tbody>
           <tr>
@@ -93,8 +95,10 @@ useSeoMeta({
       <h2 class="text-3xl font-bold my-8">Other commands (world leader only)</h2>
       <table>
         <thead>
-          <th colspan="2" class="border border-zinc-500 p-2">Command</th>
-          <th class="border border-zinc-500 p-2">Details</th>
+          <tr>
+            <th colspan="2" class="border border-zinc-500 p-2">Command</th>
+            <th class="border border-zinc-500 p-2">Details</th>
+          </tr>
         </thead>
         <tbody>
           <tr>
