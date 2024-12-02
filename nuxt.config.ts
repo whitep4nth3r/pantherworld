@@ -59,6 +59,6 @@ export default defineNuxtConfig({
   },
 
   sourcemap: {
-    client: true,
+    client: "hidden",
   },
 });
